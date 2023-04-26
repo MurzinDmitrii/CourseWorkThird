@@ -23,6 +23,13 @@ namespace Курсач.Model
                 return ClientLN + " " + ClientFN + " " + ClientPatronomic;
             }
         }
+        public string FIO
+        {
+            get
+            {
+                return ClientLN + " " + ClientFN[0] + "." + ClientPatronomic[0] + ".";
+            }
+        }
         public int GroupBlood
         {
             get

@@ -45,6 +45,7 @@
                                         <StackPanel.ContextMenu>
                                             <ContextMenu>
                                                 <MenuItem Header="Редактировать" Click="MenuItem_Click"/>
+                                                <MenuItem Header="Вывести чек" Click="MenuItem_Click_1"/>
                                             </ContextMenu>
                                         </StackPanel.ContextMenu>
                                     </StackPanel>
