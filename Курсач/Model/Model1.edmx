@@ -1,0 +1,1727 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="Хранилище КурсоваяModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Application">
+          <Key>
+            <PropertyRef Name="DocumentId" />
+            <PropertyRef Name="DocumentDate" />
+            <PropertyRef Name="ServiceId" />
+          </Key>
+          <Property Name="DocumentId" Type="int" Nullable="false" />
+          <Property Name="DocumentDate" Type="datetime" Nullable="false" />
+          <Property Name="ServiceId" Type="int" Nullable="false" />
+          <Property Name="ApplicationDate" Type="datetime" />
+          <Property Name="PayWayId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Approval">
+          <Key>
+            <PropertyRef Name="ApprovalId" />
+          </Key>
+          <Property Name="ApprovalId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ApprovalName" Type="nvarchar" MaxLength="30" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Bank">
+          <Key>
+            <PropertyRef Name="BankId" />
+          </Key>
+          <Property Name="BankId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="BankName" Type="nvarchar" MaxLength="30" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Benefits">
+          <Key>
+            <PropertyRef Name="ClientId" />
+          </Key>
+          <Property Name="ClientId" Type="int" Nullable="false" />
+          <Property Name="BemnefitsDocSeries" Type="nvarchar" MaxLength="10" />
+          <Property Name="BenefitsDocNumber" Type="nvarchar" MaxLength="10" />
+          <Property Name="BCId" Type="nvarchar" MaxLength="10" Nullable="false" />
+        </EntityType>
+        <EntityType Name="BenefitsCategory">
+          <Key>
+            <PropertyRef Name="BCId" />
+          </Key>
+          <Property Name="BCId" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="BCDescription" Type="nvarchar" MaxLength="60" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Busyness">
+          <Key>
+            <PropertyRef Name="BusynessId" />
+          </Key>
+          <Property Name="BusynessId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Busyness" Type="nvarchar" MaxLength="30" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Card">
+          <Key>
+            <PropertyRef Name="ClientId" />
+            <PropertyRef Name="CardDateStart" />
+            <PropertyRef Name="DesiaseId" />
+          </Key>
+          <Property Name="ClientId" Type="int" Nullable="false" />
+          <Property Name="CardDateStart" Type="datetime" Nullable="false" />
+          <Property Name="CardDateEnd" Type="datetime" />
+          <Property Name="DesiaseId" Type="nvarchar" MaxLength="15" Nullable="false" />
+          <Property Name="WorkerId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Category">
+          <Key>
+            <PropertyRef Name="CategoryId" />
+          </Key>
+          <Property Name="CategoryId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CategoryName" Type="nvarchar" MaxLength="30" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Client">
+          <Key>
+            <PropertyRef Name="ClientId" />
+          </Key>
+          <Property Name="ClientId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="InsuranceId" Type="nvarchar" MaxLength="15" Nullable="false" />
+          <Property Name="FamilyPositionId" Type="int" Nullable="false" />
+          <Property Name="EducationId" Type="int" Nullable="false" />
+          <Property Name="BusynessId" Type="int" Nullable="false" />
+          <Property Name="ClientLN" Type="nvarchar" MaxLength="30" Nullable="false" />
+          <Property Name="ClientFN" Type="nvarchar" MaxLength="30" Nullable="false" />
+          <Property Name="ClientPatronomic" Type="nvarchar" MaxLength="30" />
+          <Property Name="ClientGender" Type="bit" />
+          <Property Name="ClientHB" Type="datetime" />
+          <Property Name="ClientAddress" Type="nvarchar" MaxLength="150" />
+          <Property Name="ClientPhone" Type="nvarchar" MaxLength="20" />
+          <Property Name="ClientSnils" Type="nvarchar" MaxLength="15" />
+          <Property Name="ClientWorkPlaceAndPost" Type="nvarchar" MaxLength="100" />
+          <Property Name="ClientBloodGroup" Type="nvarchar" MaxLength="4" />
+          <Property Name="ClientRh-" Type="bit" />
+          <Property Name="Allergy" Type="nvarchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="ClientApproval">
+          <Key>
+            <PropertyRef Name="ClientId" />
+            <PropertyRef Name="ApprovalId" />
+          </Key>
+          <Property Name="ClientId" Type="int" Nullable="false" />
+          <Property Name="ApprovalId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ClientRequsites">
+          <Key>
+            <PropertyRef Name="ClientId" />
+          </Key>
+          <Property Name="ClientId" Type="int" Nullable="false" />
+          <Property Name="CRNumber" Type="nvarchar" MaxLength="30" Nullable="false" />
+          <Property Name="BankId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Desiase">
+          <Key>
+            <PropertyRef Name="DesiaseId" />
+          </Key>
+          <Property Name="DesiaseId" Type="nvarchar" MaxLength="15" Nullable="false" />
+          <Property Name="DesiaseName" Type="nvarchar" MaxLength="30" />
+        </EntityType>
+        <EntityType Name="Document">
+          <Key>
+            <PropertyRef Name="DocumentId" />
+            <PropertyRef Name="DocumentDate" />
+          </Key>
+          <Property Name="DocumentId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DocumentDate" Type="datetime" Nullable="false" />
+          <Property Name="ClientId" Type="int" Nullable="false" />
+          <Property Name="WorkerId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Education">
+          <Key>
+            <PropertyRef Name="EducationId" />
+          </Key>
+          <Property Name="EducationId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Education" Type="nvarchar" MaxLength="20" Nullable="false" />
+        </EntityType>
+        <EntityType Name="EnterData">
+          <Key>
+            <PropertyRef Name="Login" />
+          </Key>
+          <Property Name="Login" Type="nvarchar" MaxLength="30" Nullable="false" />
+          <Property Name="Password" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="FamilyPosition">
+          <Key>
+            <PropertyRef Name="FamilyPositionId" />
+          </Key>
+          <Property Name="FamilyPositionId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Position" Type="nvarchar" MaxLength="30" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Insurance">
+          <Key>
+            <PropertyRef Name="InsuranceId" />
+          </Key>
+          <Property Name="InsuranceId" Type="nvarchar" MaxLength="15" Nullable="false" />
+          <Property Name="InsuranceName" Type="nvarchar" MaxLength="60" Nullable="false" />
+          <Property Name="InsurancePhone" Type="nvarchar" MaxLength="15" />
+          <Property Name="InsuranceAddress" Type="nvarchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="Invalid">
+          <Key>
+            <PropertyRef Name="ClientId" />
+            <PropertyRef Name="IGId" />
+          </Key>
+          <Property Name="ClientId" Type="int" Nullable="false" />
+          <Property Name="IGId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="InvalidGroup">
+          <Key>
+            <PropertyRef Name="IGId" />
+          </Key>
+          <Property Name="IGId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IGName" Type="nvarchar" MaxLength="30" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Passport">
+          <Key>
+            <PropertyRef Name="ClientId" />
+          </Key>
+          <Property Name="ClientId" Type="int" Nullable="false" />
+          <Property Name="PassportSeria" Type="nvarchar" MaxLength="5" Nullable="false" />
+          <Property Name="PassportNumber" Type="nvarchar" MaxLength="7" Nullable="false" />
+          <Property Name="PassportWho" Type="nvarchar" MaxLength="60" />
+          <Property Name="PassportDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="PayWay">
+          <Key>
+            <PropertyRef Name="PayWayId" />
+          </Key>
+          <Property Name="PayWayId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PayWayName" Type="char" MaxLength="10" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Polis">
+          <Key>
+            <PropertyRef Name="ClientId" />
+          </Key>
+          <Property Name="PolisSeries" Type="nvarchar" MaxLength="6" />
+          <Property Name="PolisNumber" Type="nvarchar" MaxLength="10" />
+          <Property Name="ClientId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Post">
+          <Key>
+            <PropertyRef Name="PostId" />
+          </Key>
+          <Property Name="PostId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PostName" Type="nvarchar" MaxLength="30" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Price">
+          <Key>
+            <PropertyRef Name="PriceId" />
+          </Key>
+          <Property Name="PriceId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PriceSize" Type="money" />
+          <Property Name="PriceDate" Type="datetime" />
+          <Property Name="ServiceId" Type="int" Nullable="false" />
+        </EntityType>
+        <!--Ошибки, обнаруженные при создании:
+предупреждение 6002: В таблице или представлении "Курсовая.dbo.Requsites" не определен первичный ключ. Ключ был выведен, а определение таблицы или представления было создано в режиме только для чтения.-->
+        <EntityType Name="Requsites">
+          <Key>
+            <PropertyRef Name="Name" />
+            <PropertyRef Name="Phone" />
+            <PropertyRef Name="Address" />
+            <PropertyRef Name="BankId" />
+          </Key>
+          <Property Name="Name" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="Phone" Type="nvarchar" MaxLength="15" Nullable="false" />
+          <Property Name="Address" Type="nvarchar" MaxLength="60" Nullable="false" />
+          <Property Name="BankId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Service">
+          <Key>
+            <PropertyRef Name="ServiceId" />
+          </Key>
+          <Property Name="ServiceId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ServiceName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="CategoryId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Worker">
+          <Key>
+            <PropertyRef Name="WorkerId" />
+          </Key>
+          <Property Name="WorkerId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PostId" Type="int" Nullable="false" />
+          <Property Name="WorkerLN" Type="nvarchar" MaxLength="30" Nullable="false" />
+          <Property Name="WorkerFN" Type="nvarchar" MaxLength="30" Nullable="false" />
+          <Property Name="WorkerPatronimic" Type="nvarchar" MaxLength="30" />
+          <Property Name="WorkerPhone" Type="nvarchar" MaxLength="15" />
+          <Property Name="Login" Type="nvarchar" MaxLength="30" Nullable="false" />
+        </EntityType>
+        <Association Name="FK__Applicati__PayWa__08B54D69">
+          <End Role="PayWay" Type="Self.PayWay" Multiplicity="1" />
+          <End Role="Application" Type="Self.Application" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PayWay">
+              <PropertyRef Name="PayWayId" />
+            </Principal>
+            <Dependent Role="Application">
+              <PropertyRef Name="PayWayId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Applicati__Servi__7F2BE32F">
+          <End Role="Service" Type="Self.Service" Multiplicity="1" />
+          <End Role="Application" Type="Self.Application" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Service">
+              <PropertyRef Name="ServiceId" />
+            </Principal>
+            <Dependent Role="Application">
+              <PropertyRef Name="ServiceId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Application__00200768">
+          <End Role="Document" Type="Self.Document" Multiplicity="1" />
+          <End Role="Application" Type="Self.Application" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Document">
+              <PropertyRef Name="DocumentId" />
+              <PropertyRef Name="DocumentDate" />
+            </Principal>
+            <Dependent Role="Application">
+              <PropertyRef Name="DocumentId" />
+              <PropertyRef Name="DocumentDate" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Benefits__BCId__0A9D95DB">
+          <End Role="BenefitsCategory" Type="Self.BenefitsCategory" Multiplicity="1" />
+          <End Role="Benefits" Type="Self.Benefits" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="BenefitsCategory">
+              <PropertyRef Name="BCId" />
+            </Principal>
+            <Dependent Role="Benefits">
+              <PropertyRef Name="BCId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Benefits__Client__797309D9">
+          <End Role="Client" Type="Self.Client" Multiplicity="1" />
+          <End Role="Benefits" Type="Self.Benefits" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Client">
+              <PropertyRef Name="ClientId" />
+            </Principal>
+            <Dependent Role="Benefits">
+              <PropertyRef Name="ClientId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Card__ClientId__7A672E12">
+          <End Role="Client" Type="Self.Client" Multiplicity="1" />
+          <End Role="Card" Type="Self.Card" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Client">
+              <PropertyRef Name="ClientId" />
+            </Principal>
+            <Dependent Role="Card">
+              <PropertyRef Name="ClientId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Card__DesiaseId__04E4BC85">
+          <End Role="Desiase" Type="Self.Desiase" Multiplicity="1" />
+          <End Role="Card" Type="Self.Card" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Desiase">
+              <PropertyRef Name="DesiaseId" />
+            </Principal>
+            <Dependent Role="Card">
+              <PropertyRef Name="DesiaseId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Card__WorkerId__02084FDA">
+          <End Role="Worker" Type="Self.Worker" Multiplicity="1" />
+          <End Role="Card" Type="Self.Card" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Worker">
+              <PropertyRef Name="WorkerId" />
+            </Principal>
+            <Dependent Role="Card">
+              <PropertyRef Name="WorkerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Client__Busyness__07C12930">
+          <End Role="Busyness" Type="Self.Busyness" Multiplicity="1" />
+          <End Role="Client" Type="Self.Client" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Busyness">
+              <PropertyRef Name="BusynessId" />
+            </Principal>
+            <Dependent Role="Client">
+              <PropertyRef Name="BusynessId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Client__Educatio__06CD04F7">
+          <End Role="Education" Type="Self.Education" Multiplicity="1" />
+          <End Role="Client" Type="Self.Client" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Education">
+              <PropertyRef Name="EducationId" />
+            </Principal>
+            <Dependent Role="Client">
+              <PropertyRef Name="EducationId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Client__FamilyPo__05D8E0BE">
+          <End Role="FamilyPosition" Type="Self.FamilyPosition" Multiplicity="1" />
+          <End Role="Client" Type="Self.Client" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="FamilyPosition">
+              <PropertyRef Name="FamilyPositionId" />
+            </Principal>
+            <Dependent Role="Client">
+              <PropertyRef Name="FamilyPositionId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Client__Insuranc__03F0984C">
+          <End Role="Insurance" Type="Self.Insurance" Multiplicity="1" />
+          <End Role="Client" Type="Self.Client" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Insurance">
+              <PropertyRef Name="InsuranceId" />
+            </Principal>
+            <Dependent Role="Client">
+              <PropertyRef Name="InsuranceId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ClientApp__Appro__0D7A0286">
+          <End Role="Approval" Type="Self.Approval" Multiplicity="1" />
+          <End Role="ClientApproval" Type="Self.ClientApproval" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Approval">
+              <PropertyRef Name="ApprovalId" />
+            </Principal>
+            <Dependent Role="ClientApproval">
+              <PropertyRef Name="ApprovalId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ClientApp__Clien__7C4F7684">
+          <End Role="Client" Type="Self.Client" Multiplicity="1" />
+          <End Role="ClientApproval" Type="Self.ClientApproval" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Client">
+              <PropertyRef Name="ClientId" />
+            </Principal>
+            <Dependent Role="ClientApproval">
+              <PropertyRef Name="ClientId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ClientReq__BankI__0B91BA14">
+          <End Role="Bank" Type="Self.Bank" Multiplicity="1" />
+          <End Role="ClientRequsites" Type="Self.ClientRequsites" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Bank">
+              <PropertyRef Name="BankId" />
+            </Principal>
+            <Dependent Role="ClientRequsites">
+              <PropertyRef Name="BankId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ClientReq__Clien__7B5B524B">
+          <End Role="Client" Type="Self.Client" Multiplicity="1" />
+          <End Role="ClientRequsites" Type="Self.ClientRequsites" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Client">
+              <PropertyRef Name="ClientId" />
+            </Principal>
+            <Dependent Role="ClientRequsites">
+              <PropertyRef Name="ClientId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Document__Client__778AC167">
+          <End Role="Client" Type="Self.Client" Multiplicity="1" />
+          <End Role="Document" Type="Self.Document" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Client">
+              <PropertyRef Name="ClientId" />
+            </Principal>
+            <Dependent Role="Document">
+              <PropertyRef Name="ClientId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Document__Worker__01142BA1">
+          <End Role="Worker" Type="Self.Worker" Multiplicity="1" />
+          <End Role="Document" Type="Self.Document" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Worker">
+              <PropertyRef Name="WorkerId" />
+            </Principal>
+            <Dependent Role="Document">
+              <PropertyRef Name="WorkerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Invalid__ClientI__7D439ABD">
+          <End Role="Client" Type="Self.Client" Multiplicity="1" />
+          <End Role="Invalid" Type="Self.Invalid" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Client">
+              <PropertyRef Name="ClientId" />
+            </Principal>
+            <Dependent Role="Invalid">
+              <PropertyRef Name="ClientId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Invalid__IGId__0E6E26BF">
+          <End Role="InvalidGroup" Type="Self.InvalidGroup" Multiplicity="1" />
+          <End Role="Invalid" Type="Self.Invalid" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="InvalidGroup">
+              <PropertyRef Name="IGId" />
+            </Principal>
+            <Dependent Role="Invalid">
+              <PropertyRef Name="IGId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Passport__Client__76969D2E">
+          <End Role="Client" Type="Self.Client" Multiplicity="1" />
+          <End Role="Passport" Type="Self.Passport" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Client">
+              <PropertyRef Name="ClientId" />
+            </Principal>
+            <Dependent Role="Passport">
+              <PropertyRef Name="ClientId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Polis__ClientId__787EE5A0">
+          <End Role="Client" Type="Self.Client" Multiplicity="1" />
+          <End Role="Polis" Type="Self.Polis" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Client">
+              <PropertyRef Name="ClientId" />
+            </Principal>
+            <Dependent Role="Polis">
+              <PropertyRef Name="ClientId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Price__ServiceId__7E37BEF6">
+          <End Role="Service" Type="Self.Service" Multiplicity="1" />
+          <End Role="Price" Type="Self.Price" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Service">
+              <PropertyRef Name="ServiceId" />
+            </Principal>
+            <Dependent Role="Price">
+              <PropertyRef Name="ServiceId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Requsites__BankI__0C85DE4D">
+          <End Role="Bank" Type="Self.Bank" Multiplicity="1" />
+          <End Role="Requsites" Type="Self.Requsites" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Bank">
+              <PropertyRef Name="BankId" />
+            </Principal>
+            <Dependent Role="Requsites">
+              <PropertyRef Name="BankId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Service__Categor__09A971A2">
+          <End Role="Category" Type="Self.Category" Multiplicity="1" />
+          <End Role="Service" Type="Self.Service" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Category">
+              <PropertyRef Name="CategoryId" />
+            </Principal>
+            <Dependent Role="Service">
+              <PropertyRef Name="CategoryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Worker__Login__0F624AF8">
+          <End Role="EnterData" Type="Self.EnterData" Multiplicity="1" />
+          <End Role="Worker" Type="Self.Worker" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EnterData">
+              <PropertyRef Name="Login" />
+            </Principal>
+            <Dependent Role="Worker">
+              <PropertyRef Name="Login" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Worker__PostId__02FC7413">
+          <End Role="Post" Type="Self.Post" Multiplicity="1" />
+          <End Role="Worker" Type="Self.Worker" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Post">
+              <PropertyRef Name="PostId" />
+            </Principal>
+            <Dependent Role="Worker">
+              <PropertyRef Name="PostId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Function Name="AddApplication" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="DocumentId" Type="int" Mode="In" />
+          <Parameter Name="DocumentDate" Type="datetime" Mode="In" />
+          <Parameter Name="ServiceId" Type="int" Mode="In" />
+          <Parameter Name="ApplicationDate" Type="datetime" Mode="In" />
+          <Parameter Name="PayWayId" Type="int" Mode="In" />
+        </Function>
+        <Function Name="AddDocument" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="DocumentDate" Type="datetime" Mode="In" />
+          <Parameter Name="ClientId" Type="int" Mode="In" />
+          <Parameter Name="WorkerId" Type="int" Mode="In" />
+        </Function>
+        <EntityContainer Name="Хранилище КурсоваяModelContainer">
+          <EntitySet Name="Application" EntityType="Self.Application" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Approval" EntityType="Self.Approval" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Bank" EntityType="Self.Bank" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Benefits" EntityType="Self.Benefits" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="BenefitsCategory" EntityType="Self.BenefitsCategory" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Busyness" EntityType="Self.Busyness" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Card" EntityType="Self.Card" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Category" EntityType="Self.Category" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Client" EntityType="Self.Client" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ClientApproval" EntityType="Self.ClientApproval" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ClientRequsites" EntityType="Self.ClientRequsites" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Desiase" EntityType="Self.Desiase" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Document" EntityType="Self.Document" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Education" EntityType="Self.Education" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="EnterData" EntityType="Self.EnterData" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="FamilyPosition" EntityType="Self.FamilyPosition" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Insurance" EntityType="Self.Insurance" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Invalid" EntityType="Self.Invalid" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="InvalidGroup" EntityType="Self.InvalidGroup" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Passport" EntityType="Self.Passport" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PayWay" EntityType="Self.PayWay" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Polis" EntityType="Self.Polis" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Post" EntityType="Self.Post" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Price" EntityType="Self.Price" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Service" EntityType="Self.Service" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Worker" EntityType="Self.Worker" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Requsites" EntityType="Self.Requsites" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [Requsites].[Name] AS [Name], 
+    [Requsites].[Phone] AS [Phone], 
+    [Requsites].[Address] AS [Address], 
+    [Requsites].[BankId] AS [BankId]
+    FROM [dbo].[Requsites] AS [Requsites]</DefiningQuery>
+          </EntitySet>
+          <AssociationSet Name="FK__Applicati__PayWa__08B54D69" Association="Self.FK__Applicati__PayWa__08B54D69">
+            <End Role="PayWay" EntitySet="PayWay" />
+            <End Role="Application" EntitySet="Application" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Applicati__Servi__7F2BE32F" Association="Self.FK__Applicati__Servi__7F2BE32F">
+            <End Role="Service" EntitySet="Service" />
+            <End Role="Application" EntitySet="Application" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Application__00200768" Association="Self.FK__Application__00200768">
+            <End Role="Document" EntitySet="Document" />
+            <End Role="Application" EntitySet="Application" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Benefits__BCId__0A9D95DB" Association="Self.FK__Benefits__BCId__0A9D95DB">
+            <End Role="BenefitsCategory" EntitySet="BenefitsCategory" />
+            <End Role="Benefits" EntitySet="Benefits" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Benefits__Client__797309D9" Association="Self.FK__Benefits__Client__797309D9">
+            <End Role="Client" EntitySet="Client" />
+            <End Role="Benefits" EntitySet="Benefits" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Card__ClientId__7A672E12" Association="Self.FK__Card__ClientId__7A672E12">
+            <End Role="Client" EntitySet="Client" />
+            <End Role="Card" EntitySet="Card" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Card__DesiaseId__04E4BC85" Association="Self.FK__Card__DesiaseId__04E4BC85">
+            <End Role="Desiase" EntitySet="Desiase" />
+            <End Role="Card" EntitySet="Card" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Card__WorkerId__02084FDA" Association="Self.FK__Card__WorkerId__02084FDA">
+            <End Role="Worker" EntitySet="Worker" />
+            <End Role="Card" EntitySet="Card" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Client__Busyness__07C12930" Association="Self.FK__Client__Busyness__07C12930">
+            <End Role="Busyness" EntitySet="Busyness" />
+            <End Role="Client" EntitySet="Client" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Client__Educatio__06CD04F7" Association="Self.FK__Client__Educatio__06CD04F7">
+            <End Role="Education" EntitySet="Education" />
+            <End Role="Client" EntitySet="Client" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Client__FamilyPo__05D8E0BE" Association="Self.FK__Client__FamilyPo__05D8E0BE">
+            <End Role="FamilyPosition" EntitySet="FamilyPosition" />
+            <End Role="Client" EntitySet="Client" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Client__Insuranc__03F0984C" Association="Self.FK__Client__Insuranc__03F0984C">
+            <End Role="Insurance" EntitySet="Insurance" />
+            <End Role="Client" EntitySet="Client" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ClientApp__Appro__0D7A0286" Association="Self.FK__ClientApp__Appro__0D7A0286">
+            <End Role="Approval" EntitySet="Approval" />
+            <End Role="ClientApproval" EntitySet="ClientApproval" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ClientApp__Clien__7C4F7684" Association="Self.FK__ClientApp__Clien__7C4F7684">
+            <End Role="Client" EntitySet="Client" />
+            <End Role="ClientApproval" EntitySet="ClientApproval" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ClientReq__BankI__0B91BA14" Association="Self.FK__ClientReq__BankI__0B91BA14">
+            <End Role="Bank" EntitySet="Bank" />
+            <End Role="ClientRequsites" EntitySet="ClientRequsites" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ClientReq__Clien__7B5B524B" Association="Self.FK__ClientReq__Clien__7B5B524B">
+            <End Role="Client" EntitySet="Client" />
+            <End Role="ClientRequsites" EntitySet="ClientRequsites" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Document__Client__778AC167" Association="Self.FK__Document__Client__778AC167">
+            <End Role="Client" EntitySet="Client" />
+            <End Role="Document" EntitySet="Document" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Document__Worker__01142BA1" Association="Self.FK__Document__Worker__01142BA1">
+            <End Role="Worker" EntitySet="Worker" />
+            <End Role="Document" EntitySet="Document" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Invalid__ClientI__7D439ABD" Association="Self.FK__Invalid__ClientI__7D439ABD">
+            <End Role="Client" EntitySet="Client" />
+            <End Role="Invalid" EntitySet="Invalid" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Invalid__IGId__0E6E26BF" Association="Self.FK__Invalid__IGId__0E6E26BF">
+            <End Role="InvalidGroup" EntitySet="InvalidGroup" />
+            <End Role="Invalid" EntitySet="Invalid" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Passport__Client__76969D2E" Association="Self.FK__Passport__Client__76969D2E">
+            <End Role="Client" EntitySet="Client" />
+            <End Role="Passport" EntitySet="Passport" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Polis__ClientId__787EE5A0" Association="Self.FK__Polis__ClientId__787EE5A0">
+            <End Role="Client" EntitySet="Client" />
+            <End Role="Polis" EntitySet="Polis" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Price__ServiceId__7E37BEF6" Association="Self.FK__Price__ServiceId__7E37BEF6">
+            <End Role="Service" EntitySet="Service" />
+            <End Role="Price" EntitySet="Price" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Requsites__BankI__0C85DE4D" Association="Self.FK__Requsites__BankI__0C85DE4D">
+            <End Role="Bank" EntitySet="Bank" />
+            <End Role="Requsites" EntitySet="Requsites" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Service__Categor__09A971A2" Association="Self.FK__Service__Categor__09A971A2">
+            <End Role="Category" EntitySet="Category" />
+            <End Role="Service" EntitySet="Service" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Worker__Login__0F624AF8" Association="Self.FK__Worker__Login__0F624AF8">
+            <End Role="EnterData" EntitySet="EnterData" />
+            <End Role="Worker" EntitySet="Worker" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Worker__PostId__02FC7413" Association="Self.FK__Worker__PostId__02FC7413">
+            <End Role="Post" EntitySet="Post" />
+            <End Role="Worker" EntitySet="Worker" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="КурсоваяModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Application">
+          <Key>
+            <PropertyRef Name="DocumentId" />
+            <PropertyRef Name="DocumentDate" />
+            <PropertyRef Name="ServiceId" />
+          </Key>
+          <Property Name="DocumentId" Type="Int32" Nullable="false" />
+          <Property Name="DocumentDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ServiceId" Type="Int32" Nullable="false" />
+          <Property Name="ApplicationDate" Type="DateTime" Precision="3" />
+          <Property Name="PayWayId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="PayWay" Relationship="Self.FK__Applicati__PayWa__08B54D69" FromRole="Application" ToRole="PayWay" />
+          <NavigationProperty Name="Service" Relationship="Self.FK__Applicati__Servi__7F2BE32F" FromRole="Application" ToRole="Service" />
+          <NavigationProperty Name="Document" Relationship="Self.FK__Application__00200768" FromRole="Application" ToRole="Document" />
+        </EntityType>
+        <EntityType Name="Approval">
+          <Key>
+            <PropertyRef Name="ApprovalId" />
+          </Key>
+          <Property Name="ApprovalId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ApprovalName" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Client" Relationship="Self.ClientApproval" FromRole="Approval" ToRole="Client" />
+        </EntityType>
+        <EntityType Name="Bank">
+          <Key>
+            <PropertyRef Name="BankId" />
+          </Key>
+          <Property Name="BankId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="BankName" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="ClientRequsites" Relationship="Self.FK__ClientReq__BankI__0B91BA14" FromRole="Bank" ToRole="ClientRequsites" />
+          <NavigationProperty Name="Requsites" Relationship="Self.FK__Requsites__BankI__0C85DE4D" FromRole="Bank" ToRole="Requsites" />
+        </EntityType>
+        <EntityType Name="Benefits">
+          <Key>
+            <PropertyRef Name="ClientId" />
+          </Key>
+          <Property Name="ClientId" Type="Int32" Nullable="false" />
+          <Property Name="BemnefitsDocSeries" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="BenefitsDocNumber" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="BCId" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="BenefitsCategory" Relationship="Self.FK__Benefits__BCId__0A9D95DB" FromRole="Benefits" ToRole="BenefitsCategory" />
+          <NavigationProperty Name="Client" Relationship="Self.FK__Benefits__Client__797309D9" FromRole="Benefits" ToRole="Client" />
+        </EntityType>
+        <EntityType Name="BenefitsCategory">
+          <Key>
+            <PropertyRef Name="BCId" />
+          </Key>
+          <Property Name="BCId" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="BCDescription" Type="String" MaxLength="60" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Benefits" Relationship="Self.FK__Benefits__BCId__0A9D95DB" FromRole="BenefitsCategory" ToRole="Benefits" />
+        </EntityType>
+        <EntityType Name="Busyness">
+          <Key>
+            <PropertyRef Name="BusynessId" />
+          </Key>
+          <Property Name="BusynessId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Busyness1" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Client" Relationship="Self.FK__Client__Busyness__07C12930" FromRole="Busyness" ToRole="Client" />
+        </EntityType>
+        <EntityType Name="Card">
+          <Key>
+            <PropertyRef Name="ClientId" />
+            <PropertyRef Name="CardDateStart" />
+            <PropertyRef Name="DesiaseId" />
+          </Key>
+          <Property Name="ClientId" Type="Int32" Nullable="false" />
+          <Property Name="CardDateStart" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="CardDateEnd" Type="DateTime" Precision="3" />
+          <Property Name="DesiaseId" Type="String" MaxLength="15" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="WorkerId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Client" Relationship="Self.FK__Card__ClientId__7A672E12" FromRole="Card" ToRole="Client" />
+          <NavigationProperty Name="Desiase" Relationship="Self.FK__Card__DesiaseId__04E4BC85" FromRole="Card" ToRole="Desiase" />
+          <NavigationProperty Name="Worker" Relationship="Self.FK__Card__WorkerId__02084FDA" FromRole="Card" ToRole="Worker" />
+        </EntityType>
+        <EntityType Name="Category">
+          <Key>
+            <PropertyRef Name="CategoryId" />
+          </Key>
+          <Property Name="CategoryId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CategoryName" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Service" Relationship="Self.FK__Service__Categor__09A971A2" FromRole="Category" ToRole="Service" />
+        </EntityType>
+        <EntityType Name="Client">
+          <Key>
+            <PropertyRef Name="ClientId" />
+          </Key>
+          <Property Name="ClientId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="InsuranceId" Type="String" MaxLength="15" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="FamilyPositionId" Type="Int32" Nullable="false" />
+          <Property Name="EducationId" Type="Int32" Nullable="false" />
+          <Property Name="BusynessId" Type="Int32" Nullable="false" />
+          <Property Name="ClientLN" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ClientFN" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ClientPatronomic" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="ClientGender" Type="Boolean" />
+          <Property Name="ClientHB" Type="DateTime" Precision="3" />
+          <Property Name="ClientAddress" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="ClientPhone" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="ClientSnils" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Name="ClientWorkPlaceAndPost" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="ClientBloodGroup" Type="String" MaxLength="4" FixedLength="false" Unicode="true" />
+          <Property Name="ClientRh_" Type="Boolean" />
+          <Property Name="Allergy" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Benefits" Relationship="Self.FK__Benefits__Client__797309D9" FromRole="Client" ToRole="Benefits" />
+          <NavigationProperty Name="Busyness" Relationship="Self.FK__Client__Busyness__07C12930" FromRole="Client" ToRole="Busyness" />
+          <NavigationProperty Name="Card" Relationship="Self.FK__Card__ClientId__7A672E12" FromRole="Client" ToRole="Card" />
+          <NavigationProperty Name="Education" Relationship="Self.FK__Client__Educatio__06CD04F7" FromRole="Client" ToRole="Education" />
+          <NavigationProperty Name="FamilyPosition" Relationship="Self.FK__Client__FamilyPo__05D8E0BE" FromRole="Client" ToRole="FamilyPosition" />
+          <NavigationProperty Name="Insurance" Relationship="Self.FK__Client__Insuranc__03F0984C" FromRole="Client" ToRole="Insurance" />
+          <NavigationProperty Name="ClientRequsites" Relationship="Self.FK__ClientReq__Clien__7B5B524B" FromRole="Client" ToRole="ClientRequsites" />
+          <NavigationProperty Name="Document" Relationship="Self.FK__Document__Client__778AC167" FromRole="Client" ToRole="Document" />
+          <NavigationProperty Name="Passport" Relationship="Self.FK__Passport__Client__76969D2E" FromRole="Client" ToRole="Passport" />
+          <NavigationProperty Name="Polis" Relationship="Self.FK__Polis__ClientId__787EE5A0" FromRole="Client" ToRole="Polis" />
+          <NavigationProperty Name="Approval" Relationship="Self.ClientApproval" FromRole="Client" ToRole="Approval" />
+          <NavigationProperty Name="InvalidGroup" Relationship="Self.Invalid" FromRole="Client" ToRole="InvalidGroup" />
+        </EntityType>
+        <EntityType Name="ClientRequsites">
+          <Key>
+            <PropertyRef Name="ClientId" />
+          </Key>
+          <Property Name="ClientId" Type="Int32" Nullable="false" />
+          <Property Name="CRNumber" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="BankId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Bank" Relationship="Self.FK__ClientReq__BankI__0B91BA14" FromRole="ClientRequsites" ToRole="Bank" />
+          <NavigationProperty Name="Client" Relationship="Self.FK__ClientReq__Clien__7B5B524B" FromRole="ClientRequsites" ToRole="Client" />
+        </EntityType>
+        <EntityType Name="Desiase">
+          <Key>
+            <PropertyRef Name="DesiaseId" />
+          </Key>
+          <Property Name="DesiaseId" Type="String" MaxLength="15" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="DesiaseName" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Card" Relationship="Self.FK__Card__DesiaseId__04E4BC85" FromRole="Desiase" ToRole="Card" />
+        </EntityType>
+        <EntityType Name="Document">
+          <Key>
+            <PropertyRef Name="DocumentId" />
+            <PropertyRef Name="DocumentDate" />
+          </Key>
+          <Property Name="DocumentId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DocumentDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ClientId" Type="Int32" Nullable="false" />
+          <Property Name="WorkerId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Application" Relationship="Self.FK__Application__00200768" FromRole="Document" ToRole="Application" />
+          <NavigationProperty Name="Client" Relationship="Self.FK__Document__Client__778AC167" FromRole="Document" ToRole="Client" />
+          <NavigationProperty Name="Worker" Relationship="Self.FK__Document__Worker__01142BA1" FromRole="Document" ToRole="Worker" />
+        </EntityType>
+        <EntityType Name="Education">
+          <Key>
+            <PropertyRef Name="EducationId" />
+          </Key>
+          <Property Name="EducationId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Education1" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Client" Relationship="Self.FK__Client__Educatio__06CD04F7" FromRole="Education" ToRole="Client" />
+        </EntityType>
+        <EntityType Name="EnterData">
+          <Key>
+            <PropertyRef Name="Login" />
+          </Key>
+          <Property Name="Login" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Password" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Worker" Relationship="Self.FK__Worker__Login__0F624AF8" FromRole="EnterData" ToRole="Worker" />
+        </EntityType>
+        <EntityType Name="FamilyPosition">
+          <Key>
+            <PropertyRef Name="FamilyPositionId" />
+          </Key>
+          <Property Name="FamilyPositionId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Position" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Client" Relationship="Self.FK__Client__FamilyPo__05D8E0BE" FromRole="FamilyPosition" ToRole="Client" />
+        </EntityType>
+        <EntityType Name="Insurance">
+          <Key>
+            <PropertyRef Name="InsuranceId" />
+          </Key>
+          <Property Name="InsuranceId" Type="String" MaxLength="15" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="InsuranceName" Type="String" MaxLength="60" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="InsurancePhone" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Name="InsuranceAddress" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Client" Relationship="Self.FK__Client__Insuranc__03F0984C" FromRole="Insurance" ToRole="Client" />
+        </EntityType>
+        <EntityType Name="InvalidGroup">
+          <Key>
+            <PropertyRef Name="IGId" />
+          </Key>
+          <Property Name="IGId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IGName" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Client" Relationship="Self.Invalid" FromRole="InvalidGroup" ToRole="Client" />
+        </EntityType>
+        <EntityType Name="Passport">
+          <Key>
+            <PropertyRef Name="ClientId" />
+          </Key>
+          <Property Name="ClientId" Type="Int32" Nullable="false" />
+          <Property Name="PassportSeria" Type="String" MaxLength="5" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="PassportNumber" Type="String" MaxLength="7" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="PassportWho" Type="String" MaxLength="60" FixedLength="false" Unicode="true" />
+          <Property Name="PassportDate" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Client" Relationship="Self.FK__Passport__Client__76969D2E" FromRole="Passport" ToRole="Client" />
+        </EntityType>
+        <EntityType Name="PayWay">
+          <Key>
+            <PropertyRef Name="PayWayId" />
+          </Key>
+          <Property Name="PayWayId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PayWayName" Type="String" MaxLength="10" FixedLength="true" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Application" Relationship="Self.FK__Applicati__PayWa__08B54D69" FromRole="PayWay" ToRole="Application" />
+        </EntityType>
+        <EntityType Name="Polis">
+          <Key>
+            <PropertyRef Name="ClientId" />
+          </Key>
+          <Property Name="PolisSeries" Type="String" MaxLength="6" FixedLength="false" Unicode="true" />
+          <Property Name="PolisNumber" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="ClientId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Client" Relationship="Self.FK__Polis__ClientId__787EE5A0" FromRole="Polis" ToRole="Client" />
+        </EntityType>
+        <EntityType Name="Post">
+          <Key>
+            <PropertyRef Name="PostId" />
+          </Key>
+          <Property Name="PostId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PostName" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Worker" Relationship="Self.FK__Worker__PostId__02FC7413" FromRole="Post" ToRole="Worker" />
+        </EntityType>
+        <EntityType Name="Price">
+          <Key>
+            <PropertyRef Name="PriceId" />
+          </Key>
+          <Property Name="PriceId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PriceSize" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="PriceDate" Type="DateTime" Precision="3" />
+          <Property Name="ServiceId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Service" Relationship="Self.FK__Price__ServiceId__7E37BEF6" FromRole="Price" ToRole="Service" />
+        </EntityType>
+        <EntityType Name="Service">
+          <Key>
+            <PropertyRef Name="ServiceId" />
+          </Key>
+          <Property Name="ServiceId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ServiceName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="CategoryId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Application" Relationship="Self.FK__Applicati__Servi__7F2BE32F" FromRole="Service" ToRole="Application" />
+          <NavigationProperty Name="Category" Relationship="Self.FK__Service__Categor__09A971A2" FromRole="Service" ToRole="Category" />
+          <NavigationProperty Name="Price" Relationship="Self.FK__Price__ServiceId__7E37BEF6" FromRole="Service" ToRole="Price" />
+        </EntityType>
+        <EntityType Name="Worker">
+          <Key>
+            <PropertyRef Name="WorkerId" />
+          </Key>
+          <Property Name="WorkerId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PostId" Type="Int32" Nullable="false" />
+          <Property Name="WorkerLN" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="WorkerFN" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="WorkerPatronimic" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="WorkerPhone" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Name="Login" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Card" Relationship="Self.FK__Card__WorkerId__02084FDA" FromRole="Worker" ToRole="Card" />
+          <NavigationProperty Name="Document" Relationship="Self.FK__Document__Worker__01142BA1" FromRole="Worker" ToRole="Document" />
+          <NavigationProperty Name="EnterData" Relationship="Self.FK__Worker__Login__0F624AF8" FromRole="Worker" ToRole="EnterData" />
+          <NavigationProperty Name="Post" Relationship="Self.FK__Worker__PostId__02FC7413" FromRole="Worker" ToRole="Post" />
+        </EntityType>
+        <EntityType Name="Requsites">
+          <Key>
+            <PropertyRef Name="Name" />
+            <PropertyRef Name="Phone" />
+            <PropertyRef Name="Address" />
+            <PropertyRef Name="BankId" />
+          </Key>
+          <Property Name="Name" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Phone" Type="String" MaxLength="15" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Address" Type="String" MaxLength="60" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="BankId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Bank" Relationship="Self.FK__Requsites__BankI__0C85DE4D" FromRole="Requsites" ToRole="Bank" />
+        </EntityType>
+        <Association Name="FK__Applicati__PayWa__08B54D69">
+          <End Role="PayWay" Type="Self.PayWay" Multiplicity="1" />
+          <End Role="Application" Type="Self.Application" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PayWay">
+              <PropertyRef Name="PayWayId" />
+            </Principal>
+            <Dependent Role="Application">
+              <PropertyRef Name="PayWayId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Applicati__Servi__7F2BE32F">
+          <End Role="Service" Type="Self.Service" Multiplicity="1" />
+          <End Role="Application" Type="Self.Application" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Service">
+              <PropertyRef Name="ServiceId" />
+            </Principal>
+            <Dependent Role="Application">
+              <PropertyRef Name="ServiceId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Application__00200768">
+          <End Role="Document" Type="Self.Document" Multiplicity="1" />
+          <End Role="Application" Type="Self.Application" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Document">
+              <PropertyRef Name="DocumentId" />
+              <PropertyRef Name="DocumentDate" />
+            </Principal>
+            <Dependent Role="Application">
+              <PropertyRef Name="DocumentId" />
+              <PropertyRef Name="DocumentDate" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ClientReq__BankI__0B91BA14">
+          <End Role="Bank" Type="Self.Bank" Multiplicity="1" />
+          <End Role="ClientRequsites" Type="Self.ClientRequsites" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Bank">
+              <PropertyRef Name="BankId" />
+            </Principal>
+            <Dependent Role="ClientRequsites">
+              <PropertyRef Name="BankId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Requsites__BankI__0C85DE4D">
+          <End Role="Bank" Type="Self.Bank" Multiplicity="1" />
+          <End Role="Requsites" Type="Self.Requsites" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Bank">
+              <PropertyRef Name="BankId" />
+            </Principal>
+            <Dependent Role="Requsites">
+              <PropertyRef Name="BankId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Benefits__BCId__0A9D95DB">
+          <End Role="BenefitsCategory" Type="Self.BenefitsCategory" Multiplicity="1" />
+          <End Role="Benefits" Type="Self.Benefits" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="BenefitsCategory">
+              <PropertyRef Name="BCId" />
+            </Principal>
+            <Dependent Role="Benefits">
+              <PropertyRef Name="BCId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Benefits__Client__797309D9">
+          <End Role="Client" Type="Self.Client" Multiplicity="1" />
+          <End Role="Benefits" Type="Self.Benefits" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Client">
+              <PropertyRef Name="ClientId" />
+            </Principal>
+            <Dependent Role="Benefits">
+              <PropertyRef Name="ClientId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Client__Busyness__07C12930">
+          <End Role="Busyness" Type="Self.Busyness" Multiplicity="1" />
+          <End Role="Client" Type="Self.Client" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Busyness">
+              <PropertyRef Name="BusynessId" />
+            </Principal>
+            <Dependent Role="Client">
+              <PropertyRef Name="BusynessId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Card__ClientId__7A672E12">
+          <End Role="Client" Type="Self.Client" Multiplicity="1" />
+          <End Role="Card" Type="Self.Card" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Client">
+              <PropertyRef Name="ClientId" />
+            </Principal>
+            <Dependent Role="Card">
+              <PropertyRef Name="ClientId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Card__DesiaseId__04E4BC85">
+          <End Role="Desiase" Type="Self.Desiase" Multiplicity="1" />
+          <End Role="Card" Type="Self.Card" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Desiase">
+              <PropertyRef Name="DesiaseId" />
+            </Principal>
+            <Dependent Role="Card">
+              <PropertyRef Name="DesiaseId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Card__WorkerId__02084FDA">
+          <End Role="Worker" Type="Self.Worker" Multiplicity="1" />
+          <End Role="Card" Type="Self.Card" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Worker">
+              <PropertyRef Name="WorkerId" />
+            </Principal>
+            <Dependent Role="Card">
+              <PropertyRef Name="WorkerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Service__Categor__09A971A2">
+          <End Role="Category" Type="Self.Category" Multiplicity="1" />
+          <End Role="Service" Type="Self.Service" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Category">
+              <PropertyRef Name="CategoryId" />
+            </Principal>
+            <Dependent Role="Service">
+              <PropertyRef Name="CategoryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Client__Educatio__06CD04F7">
+          <End Role="Education" Type="Self.Education" Multiplicity="1" />
+          <End Role="Client" Type="Self.Client" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Education">
+              <PropertyRef Name="EducationId" />
+            </Principal>
+            <Dependent Role="Client">
+              <PropertyRef Name="EducationId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Client__FamilyPo__05D8E0BE">
+          <End Role="FamilyPosition" Type="Self.FamilyPosition" Multiplicity="1" />
+          <End Role="Client" Type="Self.Client" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="FamilyPosition">
+              <PropertyRef Name="FamilyPositionId" />
+            </Principal>
+            <Dependent Role="Client">
+              <PropertyRef Name="FamilyPositionId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Client__Insuranc__03F0984C">
+          <End Role="Insurance" Type="Self.Insurance" Multiplicity="1" />
+          <End Role="Client" Type="Self.Client" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Insurance">
+              <PropertyRef Name="InsuranceId" />
+            </Principal>
+            <Dependent Role="Client">
+              <PropertyRef Name="InsuranceId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ClientReq__Clien__7B5B524B">
+          <End Role="Client" Type="Self.Client" Multiplicity="1" />
+          <End Role="ClientRequsites" Type="Self.ClientRequsites" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Client">
+              <PropertyRef Name="ClientId" />
+            </Principal>
+            <Dependent Role="ClientRequsites">
+              <PropertyRef Name="ClientId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Document__Client__778AC167">
+          <End Role="Client" Type="Self.Client" Multiplicity="1" />
+          <End Role="Document" Type="Self.Document" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Client">
+              <PropertyRef Name="ClientId" />
+            </Principal>
+            <Dependent Role="Document">
+              <PropertyRef Name="ClientId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Passport__Client__76969D2E">
+          <End Role="Client" Type="Self.Client" Multiplicity="1" />
+          <End Role="Passport" Type="Self.Passport" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Client">
+              <PropertyRef Name="ClientId" />
+            </Principal>
+            <Dependent Role="Passport">
+              <PropertyRef Name="ClientId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Polis__ClientId__787EE5A0">
+          <End Role="Client" Type="Self.Client" Multiplicity="1" />
+          <End Role="Polis" Type="Self.Polis" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Client">
+              <PropertyRef Name="ClientId" />
+            </Principal>
+            <Dependent Role="Polis">
+              <PropertyRef Name="ClientId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Document__Worker__01142BA1">
+          <End Role="Worker" Type="Self.Worker" Multiplicity="1" />
+          <End Role="Document" Type="Self.Document" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Worker">
+              <PropertyRef Name="WorkerId" />
+            </Principal>
+            <Dependent Role="Document">
+              <PropertyRef Name="WorkerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Worker__Login__0F624AF8">
+          <End Role="EnterData" Type="Self.EnterData" Multiplicity="1" />
+          <End Role="Worker" Type="Self.Worker" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EnterData">
+              <PropertyRef Name="Login" />
+            </Principal>
+            <Dependent Role="Worker">
+              <PropertyRef Name="Login" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Worker__PostId__02FC7413">
+          <End Role="Post" Type="Self.Post" Multiplicity="1" />
+          <End Role="Worker" Type="Self.Worker" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Post">
+              <PropertyRef Name="PostId" />
+            </Principal>
+            <Dependent Role="Worker">
+              <PropertyRef Name="PostId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Price__ServiceId__7E37BEF6">
+          <End Role="Service" Type="Self.Service" Multiplicity="1" />
+          <End Role="Price" Type="Self.Price" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Service">
+              <PropertyRef Name="ServiceId" />
+            </Principal>
+            <Dependent Role="Price">
+              <PropertyRef Name="ServiceId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="ClientApproval">
+          <End Role="Approval" Type="Self.Approval" Multiplicity="*" />
+          <End Role="Client" Type="Self.Client" Multiplicity="*" />
+        </Association>
+        <Association Name="Invalid">
+          <End Role="Client" Type="Self.Client" Multiplicity="*" />
+          <End Role="InvalidGroup" Type="Self.InvalidGroup" Multiplicity="*" />
+        </Association>
+        <EntityContainer Name="КурсоваяEntities2" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Application" EntityType="Self.Application" />
+          <EntitySet Name="Approval" EntityType="Self.Approval" />
+          <EntitySet Name="Bank" EntityType="Self.Bank" />
+          <EntitySet Name="Benefits" EntityType="Self.Benefits" />
+          <EntitySet Name="BenefitsCategory" EntityType="Self.BenefitsCategory" />
+          <EntitySet Name="Busyness" EntityType="Self.Busyness" />
+          <EntitySet Name="Card" EntityType="Self.Card" />
+          <EntitySet Name="Category" EntityType="Self.Category" />
+          <EntitySet Name="Client" EntityType="Self.Client" />
+          <EntitySet Name="ClientRequsites" EntityType="Self.ClientRequsites" />
+          <EntitySet Name="Desiase" EntityType="Self.Desiase" />
+          <EntitySet Name="Document" EntityType="Self.Document" />
+          <EntitySet Name="Education" EntityType="Self.Education" />
+          <EntitySet Name="EnterData" EntityType="Self.EnterData" />
+          <EntitySet Name="FamilyPosition" EntityType="Self.FamilyPosition" />
+          <EntitySet Name="Insurance" EntityType="Self.Insurance" />
+          <EntitySet Name="InvalidGroup" EntityType="Self.InvalidGroup" />
+          <EntitySet Name="Passport" EntityType="Self.Passport" />
+          <EntitySet Name="PayWay" EntityType="Self.PayWay" />
+          <EntitySet Name="Polis" EntityType="Self.Polis" />
+          <EntitySet Name="Post" EntityType="Self.Post" />
+          <EntitySet Name="Price" EntityType="Self.Price" />
+          <EntitySet Name="Service" EntityType="Self.Service" />
+          <EntitySet Name="Worker" EntityType="Self.Worker" />
+          <EntitySet Name="Requsites" EntityType="Self.Requsites" />
+          <AssociationSet Name="FK__Applicati__PayWa__08B54D69" Association="Self.FK__Applicati__PayWa__08B54D69">
+            <End Role="PayWay" EntitySet="PayWay" />
+            <End Role="Application" EntitySet="Application" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Applicati__Servi__7F2BE32F" Association="Self.FK__Applicati__Servi__7F2BE32F">
+            <End Role="Service" EntitySet="Service" />
+            <End Role="Application" EntitySet="Application" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Application__00200768" Association="Self.FK__Application__00200768">
+            <End Role="Document" EntitySet="Document" />
+            <End Role="Application" EntitySet="Application" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ClientReq__BankI__0B91BA14" Association="Self.FK__ClientReq__BankI__0B91BA14">
+            <End Role="Bank" EntitySet="Bank" />
+            <End Role="ClientRequsites" EntitySet="ClientRequsites" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Requsites__BankI__0C85DE4D" Association="Self.FK__Requsites__BankI__0C85DE4D">
+            <End Role="Bank" EntitySet="Bank" />
+            <End Role="Requsites" EntitySet="Requsites" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Benefits__BCId__0A9D95DB" Association="Self.FK__Benefits__BCId__0A9D95DB">
+            <End Role="BenefitsCategory" EntitySet="BenefitsCategory" />
+            <End Role="Benefits" EntitySet="Benefits" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Benefits__Client__797309D9" Association="Self.FK__Benefits__Client__797309D9">
+            <End Role="Client" EntitySet="Client" />
+            <End Role="Benefits" EntitySet="Benefits" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Client__Busyness__07C12930" Association="Self.FK__Client__Busyness__07C12930">
+            <End Role="Busyness" EntitySet="Busyness" />
+            <End Role="Client" EntitySet="Client" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Card__ClientId__7A672E12" Association="Self.FK__Card__ClientId__7A672E12">
+            <End Role="Client" EntitySet="Client" />
+            <End Role="Card" EntitySet="Card" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Card__DesiaseId__04E4BC85" Association="Self.FK__Card__DesiaseId__04E4BC85">
+            <End Role="Desiase" EntitySet="Desiase" />
+            <End Role="Card" EntitySet="Card" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Card__WorkerId__02084FDA" Association="Self.FK__Card__WorkerId__02084FDA">
+            <End Role="Worker" EntitySet="Worker" />
+            <End Role="Card" EntitySet="Card" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Service__Categor__09A971A2" Association="Self.FK__Service__Categor__09A971A2">
+            <End Role="Category" EntitySet="Category" />
+            <End Role="Service" EntitySet="Service" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Client__Educatio__06CD04F7" Association="Self.FK__Client__Educatio__06CD04F7">
+            <End Role="Education" EntitySet="Education" />
+            <End Role="Client" EntitySet="Client" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Client__FamilyPo__05D8E0BE" Association="Self.FK__Client__FamilyPo__05D8E0BE">
+            <End Role="FamilyPosition" EntitySet="FamilyPosition" />
+            <End Role="Client" EntitySet="Client" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Client__Insuranc__03F0984C" Association="Self.FK__Client__Insuranc__03F0984C">
+            <End Role="Insurance" EntitySet="Insurance" />
+            <End Role="Client" EntitySet="Client" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ClientReq__Clien__7B5B524B" Association="Self.FK__ClientReq__Clien__7B5B524B">
+            <End Role="Client" EntitySet="Client" />
+            <End Role="ClientRequsites" EntitySet="ClientRequsites" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Document__Client__778AC167" Association="Self.FK__Document__Client__778AC167">
+            <End Role="Client" EntitySet="Client" />
+            <End Role="Document" EntitySet="Document" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Passport__Client__76969D2E" Association="Self.FK__Passport__Client__76969D2E">
+            <End Role="Client" EntitySet="Client" />
+            <End Role="Passport" EntitySet="Passport" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Polis__ClientId__787EE5A0" Association="Self.FK__Polis__ClientId__787EE5A0">
+            <End Role="Client" EntitySet="Client" />
+            <End Role="Polis" EntitySet="Polis" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Document__Worker__01142BA1" Association="Self.FK__Document__Worker__01142BA1">
+            <End Role="Worker" EntitySet="Worker" />
+            <End Role="Document" EntitySet="Document" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Worker__Login__0F624AF8" Association="Self.FK__Worker__Login__0F624AF8">
+            <End Role="EnterData" EntitySet="EnterData" />
+            <End Role="Worker" EntitySet="Worker" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Worker__PostId__02FC7413" Association="Self.FK__Worker__PostId__02FC7413">
+            <End Role="Post" EntitySet="Post" />
+            <End Role="Worker" EntitySet="Worker" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Price__ServiceId__7E37BEF6" Association="Self.FK__Price__ServiceId__7E37BEF6">
+            <End Role="Service" EntitySet="Service" />
+            <End Role="Price" EntitySet="Price" />
+          </AssociationSet>
+          <AssociationSet Name="ClientApproval" Association="Self.ClientApproval">
+            <End Role="Approval" EntitySet="Approval" />
+            <End Role="Client" EntitySet="Client" />
+          </AssociationSet>
+          <AssociationSet Name="Invalid" Association="Self.Invalid">
+            <End Role="Client" EntitySet="Client" />
+            <End Role="InvalidGroup" EntitySet="InvalidGroup" />
+          </AssociationSet>
+          <FunctionImport Name="AddApplication">
+            <Parameter Name="DocumentId" Mode="In" Type="Int32" />
+            <Parameter Name="DocumentDate" Mode="In" Type="DateTime" />
+            <Parameter Name="ServiceId" Mode="In" Type="Int32" />
+            <Parameter Name="ApplicationDate" Mode="In" Type="DateTime" />
+            <Parameter Name="PayWayId" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="AddDocument">
+            <Parameter Name="DocumentDate" Mode="In" Type="DateTime" />
+            <Parameter Name="ClientId" Mode="In" Type="Int32" />
+            <Parameter Name="WorkerId" Mode="In" Type="Int32" />
+          </FunctionImport>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Хранилище КурсоваяModelContainer" CdmEntityContainer="КурсоваяEntities2">
+          <EntitySetMapping Name="Application">
+            <EntityTypeMapping TypeName="КурсоваяModel.Application">
+              <MappingFragment StoreEntitySet="Application">
+                <ScalarProperty Name="DocumentId" ColumnName="DocumentId" />
+                <ScalarProperty Name="DocumentDate" ColumnName="DocumentDate" />
+                <ScalarProperty Name="ServiceId" ColumnName="ServiceId" />
+                <ScalarProperty Name="ApplicationDate" ColumnName="ApplicationDate" />
+                <ScalarProperty Name="PayWayId" ColumnName="PayWayId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Approval">
+            <EntityTypeMapping TypeName="КурсоваяModel.Approval">
+              <MappingFragment StoreEntitySet="Approval">
+                <ScalarProperty Name="ApprovalId" ColumnName="ApprovalId" />
+                <ScalarProperty Name="ApprovalName" ColumnName="ApprovalName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Bank">
+            <EntityTypeMapping TypeName="КурсоваяModel.Bank">
+              <MappingFragment StoreEntitySet="Bank">
+                <ScalarProperty Name="BankId" ColumnName="BankId" />
+                <ScalarProperty Name="BankName" ColumnName="BankName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Benefits">
+            <EntityTypeMapping TypeName="КурсоваяModel.Benefits">
+              <MappingFragment StoreEntitySet="Benefits">
+                <ScalarProperty Name="ClientId" ColumnName="ClientId" />
+                <ScalarProperty Name="BemnefitsDocSeries" ColumnName="BemnefitsDocSeries" />
+                <ScalarProperty Name="BenefitsDocNumber" ColumnName="BenefitsDocNumber" />
+                <ScalarProperty Name="BCId" ColumnName="BCId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="BenefitsCategory">
+            <EntityTypeMapping TypeName="КурсоваяModel.BenefitsCategory">
+              <MappingFragment StoreEntitySet="BenefitsCategory">
+                <ScalarProperty Name="BCId" ColumnName="BCId" />
+                <ScalarProperty Name="BCDescription" ColumnName="BCDescription" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Busyness">
+            <EntityTypeMapping TypeName="КурсоваяModel.Busyness">
+              <MappingFragment StoreEntitySet="Busyness">
+                <ScalarProperty Name="BusynessId" ColumnName="BusynessId" />
+                <ScalarProperty Name="Busyness1" ColumnName="Busyness" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Card">
+            <EntityTypeMapping TypeName="КурсоваяModel.Card">
+              <MappingFragment StoreEntitySet="Card">
+                <ScalarProperty Name="ClientId" ColumnName="ClientId" />
+                <ScalarProperty Name="CardDateStart" ColumnName="CardDateStart" />
+                <ScalarProperty Name="CardDateEnd" ColumnName="CardDateEnd" />
+                <ScalarProperty Name="DesiaseId" ColumnName="DesiaseId" />
+                <ScalarProperty Name="WorkerId" ColumnName="WorkerId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Category">
+            <EntityTypeMapping TypeName="КурсоваяModel.Category">
+              <MappingFragment StoreEntitySet="Category">
+                <ScalarProperty Name="CategoryId" ColumnName="CategoryId" />
+                <ScalarProperty Name="CategoryName" ColumnName="CategoryName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Client">
+            <EntityTypeMapping TypeName="КурсоваяModel.Client">
+              <MappingFragment StoreEntitySet="Client">
+                <ScalarProperty Name="ClientId" ColumnName="ClientId" />
+                <ScalarProperty Name="InsuranceId" ColumnName="InsuranceId" />
+                <ScalarProperty Name="FamilyPositionId" ColumnName="FamilyPositionId" />
+                <ScalarProperty Name="EducationId" ColumnName="EducationId" />
+                <ScalarProperty Name="BusynessId" ColumnName="BusynessId" />
+                <ScalarProperty Name="ClientLN" ColumnName="ClientLN" />
+                <ScalarProperty Name="ClientFN" ColumnName="ClientFN" />
+                <ScalarProperty Name="ClientPatronomic" ColumnName="ClientPatronomic" />
+                <ScalarProperty Name="ClientGender" ColumnName="ClientGender" />
+                <ScalarProperty Name="ClientHB" ColumnName="ClientHB" />
+                <ScalarProperty Name="ClientAddress" ColumnName="ClientAddress" />
+                <ScalarProperty Name="ClientPhone" ColumnName="ClientPhone" />
+                <ScalarProperty Name="ClientSnils" ColumnName="ClientSnils" />
+                <ScalarProperty Name="ClientWorkPlaceAndPost" ColumnName="ClientWorkPlaceAndPost" />
+                <ScalarProperty Name="ClientBloodGroup" ColumnName="ClientBloodGroup" />
+                <ScalarProperty Name="ClientRh_" ColumnName="ClientRh-" />
+                <ScalarProperty Name="Allergy" ColumnName="Allergy" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ClientRequsites">
+            <EntityTypeMapping TypeName="КурсоваяModel.ClientRequsites">
+              <MappingFragment StoreEntitySet="ClientRequsites">
+                <ScalarProperty Name="ClientId" ColumnName="ClientId" />
+                <ScalarProperty Name="CRNumber" ColumnName="CRNumber" />
+                <ScalarProperty Name="BankId" ColumnName="BankId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Desiase">
+            <EntityTypeMapping TypeName="КурсоваяModel.Desiase">
+              <MappingFragment StoreEntitySet="Desiase">
+                <ScalarProperty Name="DesiaseId" ColumnName="DesiaseId" />
+                <ScalarProperty Name="DesiaseName" ColumnName="DesiaseName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Document">
+            <EntityTypeMapping TypeName="КурсоваяModel.Document">
+              <MappingFragment StoreEntitySet="Document">
+                <ScalarProperty Name="DocumentId" ColumnName="DocumentId" />
+                <ScalarProperty Name="DocumentDate" ColumnName="DocumentDate" />
+                <ScalarProperty Name="ClientId" ColumnName="ClientId" />
+                <ScalarProperty Name="WorkerId" ColumnName="WorkerId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Education">
+            <EntityTypeMapping TypeName="КурсоваяModel.Education">
+              <MappingFragment StoreEntitySet="Education">
+                <ScalarProperty Name="EducationId" ColumnName="EducationId" />
+                <ScalarProperty Name="Education1" ColumnName="Education" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EnterData">
+            <EntityTypeMapping TypeName="КурсоваяModel.EnterData">
+              <MappingFragment StoreEntitySet="EnterData">
+                <ScalarProperty Name="Login" ColumnName="Login" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="FamilyPosition">
+            <EntityTypeMapping TypeName="КурсоваяModel.FamilyPosition">
+              <MappingFragment StoreEntitySet="FamilyPosition">
+                <ScalarProperty Name="FamilyPositionId" ColumnName="FamilyPositionId" />
+                <ScalarProperty Name="Position" ColumnName="Position" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Insurance">
+            <EntityTypeMapping TypeName="КурсоваяModel.Insurance">
+              <MappingFragment StoreEntitySet="Insurance">
+                <ScalarProperty Name="InsuranceId" ColumnName="InsuranceId" />
+                <ScalarProperty Name="InsuranceName" ColumnName="InsuranceName" />
+                <ScalarProperty Name="InsurancePhone" ColumnName="InsurancePhone" />
+                <ScalarProperty Name="InsuranceAddress" ColumnName="InsuranceAddress" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="InvalidGroup">
+            <EntityTypeMapping TypeName="КурсоваяModel.InvalidGroup">
+              <MappingFragment StoreEntitySet="InvalidGroup">
+                <ScalarProperty Name="IGId" ColumnName="IGId" />
+                <ScalarProperty Name="IGName" ColumnName="IGName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Passport">
+            <EntityTypeMapping TypeName="КурсоваяModel.Passport">
+              <MappingFragment StoreEntitySet="Passport">
+                <ScalarProperty Name="ClientId" ColumnName="ClientId" />
+                <ScalarProperty Name="PassportSeria" ColumnName="PassportSeria" />
+                <ScalarProperty Name="PassportNumber" ColumnName="PassportNumber" />
+                <ScalarProperty Name="PassportWho" ColumnName="PassportWho" />
+                <ScalarProperty Name="PassportDate" ColumnName="PassportDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PayWay">
+            <EntityTypeMapping TypeName="КурсоваяModel.PayWay">
+              <MappingFragment StoreEntitySet="PayWay">
+                <ScalarProperty Name="PayWayId" ColumnName="PayWayId" />
+                <ScalarProperty Name="PayWayName" ColumnName="PayWayName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Polis">
+            <EntityTypeMapping TypeName="КурсоваяModel.Polis">
+              <MappingFragment StoreEntitySet="Polis">
+                <ScalarProperty Name="PolisSeries" ColumnName="PolisSeries" />
+                <ScalarProperty Name="PolisNumber" ColumnName="PolisNumber" />
+                <ScalarProperty Name="ClientId" ColumnName="ClientId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Post">
+            <EntityTypeMapping TypeName="КурсоваяModel.Post">
+              <MappingFragment StoreEntitySet="Post">
+                <ScalarProperty Name="PostId" ColumnName="PostId" />
+                <ScalarProperty Name="PostName" ColumnName="PostName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Price">
+            <EntityTypeMapping TypeName="КурсоваяModel.Price">
+              <MappingFragment StoreEntitySet="Price">
+                <ScalarProperty Name="PriceId" ColumnName="PriceId" />
+                <ScalarProperty Name="PriceSize" ColumnName="PriceSize" />
+                <ScalarProperty Name="PriceDate" ColumnName="PriceDate" />
+                <ScalarProperty Name="ServiceId" ColumnName="ServiceId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Service">
+            <EntityTypeMapping TypeName="КурсоваяModel.Service">
+              <MappingFragment StoreEntitySet="Service">
+                <ScalarProperty Name="ServiceId" ColumnName="ServiceId" />
+                <ScalarProperty Name="ServiceName" ColumnName="ServiceName" />
+                <ScalarProperty Name="CategoryId" ColumnName="CategoryId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Worker">
+            <EntityTypeMapping TypeName="КурсоваяModel.Worker">
+              <MappingFragment StoreEntitySet="Worker">
+                <ScalarProperty Name="WorkerId" ColumnName="WorkerId" />
+                <ScalarProperty Name="PostId" ColumnName="PostId" />
+                <ScalarProperty Name="WorkerLN" ColumnName="WorkerLN" />
+                <ScalarProperty Name="WorkerFN" ColumnName="WorkerFN" />
+                <ScalarProperty Name="WorkerPatronimic" ColumnName="WorkerPatronimic" />
+                <ScalarProperty Name="WorkerPhone" ColumnName="WorkerPhone" />
+                <ScalarProperty Name="Login" ColumnName="Login" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Requsites">
+            <EntityTypeMapping TypeName="КурсоваяModel.Requsites">
+              <MappingFragment StoreEntitySet="Requsites">
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="BankId" ColumnName="BankId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <AssociationSetMapping Name="ClientApproval" TypeName="КурсоваяModel.ClientApproval" StoreEntitySet="ClientApproval">
+            <EndProperty Name="Approval">
+              <ScalarProperty Name="ApprovalId" ColumnName="ApprovalId" />
+            </EndProperty>
+            <EndProperty Name="Client">
+              <ScalarProperty Name="ClientId" ColumnName="ClientId" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="Invalid" TypeName="КурсоваяModel.Invalid" StoreEntitySet="Invalid">
+            <EndProperty Name="Client">
+              <ScalarProperty Name="ClientId" ColumnName="ClientId" />
+            </EndProperty>
+            <EndProperty Name="InvalidGroup">
+              <ScalarProperty Name="IGId" ColumnName="IGId" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <FunctionImportMapping FunctionImportName="AddApplication" FunctionName="Хранилище КурсоваяModel.AddApplication" />
+          <FunctionImportMapping FunctionImportName="AddDocument" FunctionName="Хранилище КурсоваяModel.AddDocument" />
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Нет" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
