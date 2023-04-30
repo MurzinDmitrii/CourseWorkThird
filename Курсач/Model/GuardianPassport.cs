@@ -12,14 +12,15 @@ namespace Курсач.Model
     using System;
     using System.Collections.Generic;
     
-    public partial class Passport
+    public partial class GuardianPassport
     {
-        public int ClientId { get; set; }
         public string PassportSeria { get; set; }
         public string PassportNumber { get; set; }
         public string PassportWho { get; set; }
         public System.DateTime PassportDate { get; set; }
+        public int ClientId { get; set; }
+        public int GuardianId { get; set; }
     
-        public virtual Client Client { get; set; }
+        public virtual Guardian Guardian { get; set; }
     }
 }

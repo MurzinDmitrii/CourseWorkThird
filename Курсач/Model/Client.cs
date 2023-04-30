@@ -19,6 +19,7 @@ namespace Курсач.Model
         {
             this.Card = new HashSet<Card>();
             this.Document = new HashSet<Document>();
+            this.Guardian = new HashSet<Guardian>();
             this.Approval = new HashSet<Approval>();
             this.InvalidGroup = new HashSet<InvalidGroup>();
         }
@@ -40,6 +41,7 @@ namespace Курсач.Model
         public string ClientBloodGroup { get; set; }
         public Nullable<bool> ClientRh_ { get; set; }
         public string Allergy { get; set; }
+        public string Email { get; set; }
     
         public virtual Benefits Benefits { get; set; }
         public virtual Busyness Busyness { get; set; }
@@ -51,6 +53,8 @@ namespace Курсач.Model
         public virtual ClientRequsites ClientRequsites { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Document> Document { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Guardian> Guardian { get; set; }
         public virtual Passport Passport { get; set; }
         public virtual Polis Polis { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

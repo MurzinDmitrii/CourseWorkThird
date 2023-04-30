@@ -37,15 +37,14 @@ namespace Курсач.Pages
         }
         private void Load()
         {
-            var CardList = DB.entities.Card.ToList();
-            CardList = CardList.Where(c => c.Client.FullName.ToLower().Contains(SearchBox.Text.ToLower())).ToList();
+            var CardList = DB.entities.Client.ToList();
+            CardList = CardList.Where(c => c.FullName.ToLower().Contains(SearchBox.Text.ToLower())).ToList();
             if(CardList.Count == 0)
             {
-                Card card = new Card();
-                card.Client = new Client();
-                card.Client.ClientLN = "Результатов нет!";
-                card.Client.ClientGender = null;
-                CardList.Add(card);
+                Client client = new Client();
+                client.ClientLN = "Результатов нет!";
+                client.ClientGender = null;
+                CardList.Add(client);
             }
             CardListView.ItemsSource = CardList;
         }
@@ -53,6 +52,13 @@ namespace Курсач.Pages
         private void SearchBox_TextChanged(object sender, TextChangedEventArgs e)
         {
             Load();
+        }
+
+        private void AddCardButton_Click(object sender, RoutedEventArgs e)
+        {
+            Button button = (Button)sender;
+            Client client = button.DataContext as Client;
+            NavigationService.Navigate(new CardPage(client));
         }
     }
 }
