@@ -54,11 +54,12 @@ namespace Курсач.Pages
             Load();
         }
 
-        private void AddCardButton_Click(object sender, RoutedEventArgs e)
+        private void MenuItem_Click(object sender, RoutedEventArgs e)
         {
-            Button button = (Button)sender;
-            Client client = button.DataContext as Client;
+            MenuItem item = (MenuItem)sender;
+            Client client = item.DataContext as Client;
             NavigationService.Navigate(new CardPage(client));
         }
+
     }
 }

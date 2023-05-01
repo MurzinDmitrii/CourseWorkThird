@@ -15,10 +15,10 @@ namespace Курсач.Model
     using System.Data.Entity.Core.Objects;
     using System.Linq;
     
-    public partial class CourseWorkEntities1 : DbContext
+    public partial class CourseWorkEntities : DbContext
     {
-        public CourseWorkEntities1()
-            : base("name=CourseWorkEntities1")
+        public CourseWorkEntities()
+            : base("name=CourseWorkEntities")
         {
         }
     
@@ -34,6 +34,7 @@ namespace Курсач.Model
         public virtual DbSet<BenefitsCategory> BenefitsCategory { get; set; }
         public virtual DbSet<Busyness> Busyness { get; set; }
         public virtual DbSet<Card> Card { get; set; }
+        public virtual DbSet<CardTablePart> CardTablePart { get; set; }
         public virtual DbSet<Category> Category { get; set; }
         public virtual DbSet<Client> Client { get; set; }
         public virtual DbSet<ClientRequsites> ClientRequsites { get; set; }

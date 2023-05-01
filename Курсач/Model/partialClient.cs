@@ -47,5 +47,12 @@ namespace Курсач.Model
 
             }
         }
+        public string DateOfBorn
+        {
+            get
+            {
+                return ClientHB.Value.Day.ToString()+"."+ ClientHB.Value.Month.ToString()+"."+ ClientHB.Value.Year.ToString();
+            }
+        }
     }
 }

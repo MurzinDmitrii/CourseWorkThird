@@ -17,7 +17,7 @@ namespace Курсач.Model
         public string PassportSeria { get; set; }
         public string PassportNumber { get; set; }
         public string PassportWho { get; set; }
-        public System.DateTime PassportDate { get; set; }
+        public Nullable<System.DateTime> PassportDate { get; set; }
         public int ClientId { get; set; }
         public int GuardianId { get; set; }
     

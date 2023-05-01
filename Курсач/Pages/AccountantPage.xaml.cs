@@ -93,5 +93,10 @@ namespace Курсач.Pages
             Model.Application selectedItem = menu.DataContext as Model.Application;
             PrintCheck.OutputApplication(selectedItem);
         }
+
+        private void SearchBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            Load();
+        }
     }
 }

@@ -17,7 +17,7 @@ namespace Курсач.Model
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Card()
         {
-            this.Desiase1 = new HashSet<Desiase>();
+            this.CardTablePart = new HashSet<CardTablePart>();
         }
     
         public int ID { get; set; }
@@ -38,6 +38,6 @@ namespace Курсач.Model
         public virtual Desiase Desiase { get; set; }
         public virtual Worker Worker { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Desiase> Desiase1 { get; set; }
+        public virtual ICollection<CardTablePart> CardTablePart { get; set; }
     }
 }

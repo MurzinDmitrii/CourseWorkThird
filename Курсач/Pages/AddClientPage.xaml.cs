@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity.Validation;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
@@ -31,7 +32,6 @@ namespace Курсач.Pages
             cl.ClientGender = false;
             cl.Passport = new Passport();
             cl.Polis = new Polis();
-            cl.Benefits = new Benefits();
             this.DataContext = cl;
             InitializeComponent();
             FamilyBox.ItemsSource = DB.entities.FamilyPosition.ToList();
@@ -93,7 +93,11 @@ namespace Курсач.Pages
             cl.ClientHB = HBBox.SelectedDate;
             cl.Passport.PassportDate = (DateTime)PassportDateBox.SelectedDate;
             if (cl.ClientId == 0)DB.entities.Client.Add(cl);
-            if (guardian.GuardianId == 0 && guardian != null && cl.ClientId == 0)
+            if (!string.IsNullOrEmpty(PrivilegesSeryBox.Text))
+            {
+                cl.Benefits = new Benefits();
+            }
+            if (guardian != null && guardian.GuardianId == 0 && cl.ClientId == 0)
             {
                 guardian.GuardianPassport = new GuardianPassport();
                 var GuarList = DB.entities.Client.ToList();
@@ -105,7 +109,7 @@ namespace Курсач.Pages
                     GuardianAddresBox.Text, GuardianPassportDateBox.SelectedDate,
                     guardian.ClientId, guar.GuardianId);
             }
-            if (guardian.GuardianId == 0 && guardian != null)
+            if (guardian != null && guardian.GuardianId == 0)
             {
                 guardian.GuardianPassport = new GuardianPassport();
                 guardian.ClientId = cl.ClientId;
@@ -116,16 +120,15 @@ namespace Курсач.Pages
                     GuardianAddresBox.Text, GuardianPassportDateBox.SelectedDate,
                     guardian.ClientId, guar.GuardianId);
             }
-
             try
             {
                 DB.entities.SaveChanges();
+                NavigationService.GoBack();
             }
             catch
             {
                 MessageBox.Show("Корректно заполните поля!", "Ошибка!", MessageBoxButton.OK, MessageBoxImage.Error);
             }
-            NavigationService.GoBack();
         }
 
         private void PhoneBox_PreviewTextInput(object sender, TextCompositionEventArgs e)

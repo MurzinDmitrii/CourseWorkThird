@@ -12,21 +12,14 @@ namespace Курсач.Model
     using System;
     using System.Collections.Generic;
     
-    public partial class Desiase
+    public partial class CardTablePart
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Desiase()
-        {
-            this.Card = new HashSet<Card>();
-            this.CardTablePart = new HashSet<CardTablePart>();
-        }
-    
         public string DesiaseId { get; set; }
-        public string DesiaseName { get; set; }
+        public int ID { get; set; }
+        public int WorkerId { get; set; }
     
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Card> Card { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<CardTablePart> CardTablePart { get; set; }
+        public virtual Card Card { get; set; }
+        public virtual Desiase Desiase { get; set; }
+        public virtual Worker Worker { get; set; }
     }
 }

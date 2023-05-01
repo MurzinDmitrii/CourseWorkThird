@@ -59,8 +59,7 @@
                     <StackPanel Orientation="Horizontal" Margin="5">
                         <ComboBox materialDesign:HintAssist.Hint="Группа крови" x:Name="GroupBloodBox"
                                   materialDesign:HintAssist.HintOpacity=".26" Margin="10"
-                                  IsEditable="True" SelectedIndex="{Binding GroupBlood}">
-                        </ComboBox>
+                                  IsEditable="True" SelectedIndex="{Binding GroupBlood}"/>
                         <TextBlock Text="Пол: " Margin="5,20,0,20"/>
                         <ToggleButton materialDesign:ToggleButtonAssist.OnContent="М" IsChecked="{Binding ClientGender}"
                                       Content="Ж" Margin="5,10,10,10" x:Name="GenderBox" 

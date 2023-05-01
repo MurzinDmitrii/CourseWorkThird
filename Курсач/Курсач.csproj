@@ -101,6 +101,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Pages\AddAddCardPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Pages\AddApplication.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -146,6 +150,9 @@
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\Card.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\CardTablePart.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\Category.cs">
@@ -228,6 +235,9 @@
     </Compile>
     <Compile Include="Pages\AccountantPage.xaml.cs">
       <DependentUpon>AccountantPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\AddAddCardPage.xaml.cs">
+      <DependentUpon>AddAddCardPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\AddApplication.xaml.cs">
       <DependentUpon>AddApplication.xaml</DependentUpon>

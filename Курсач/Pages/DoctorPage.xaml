@@ -17,8 +17,7 @@
                     <TextBox Margin="5" Width="100" x:Name="SearchBox" MaxLength="30" 
                                  Style="{StaticResource MaterialDesignTextBox}"
                                  materialDesign:HintAssist.HelperText="Поиск" TextChanged="SearchBox_TextChanged"/>
-                    <Button x:Name="AddCardButton" Content="Добавить карточку" Margin="185,5" Cursor="Hand" Click="AddCardButton_Click"/>
-                    <Button x:Name="BackButton" Content="Назад" Margin="50,5,5,5" Cursor="Hand" Click="BackButton_Click"/>
+                    <Button x:Name="BackButton" Content="Назад" Margin="580,5,5,5" Cursor="Hand" Click="BackButton_Click"/>
                 </StackPanel>
                 <ListView Height="350" Width="750" x:Name="CardListView" Margin="10" ScrollViewer.CanContentScroll="False">
                     <ListView.ItemTemplate>
@@ -27,9 +26,14 @@
                                 <StackPanel x:Name="ClientPanel" Orientation="Horizontal" Margin="5" Width="700">
                                     <StackPanel Orientation="Vertical">
                                         <TextBlock Text="{Binding FullName}" Margin="5"/>
-                                        <TextBlock Text="{Binding ClientGenderWord}" Margin="5"/>
+                                        <TextBlock Text="{Binding DateOfBorn}" Margin="5"/>
                                         <TextBlock Text="{Binding ClientPhone}" Margin="5"/>
                                     </StackPanel>
+                                    <StackPanel.ContextMenu>
+                                        <ContextMenu>
+                                            <MenuItem Header="Перейти к карте" Click="MenuItem_Click"/>
+                                        </ContextMenu>
+                                    </StackPanel.ContextMenu>
                                 </StackPanel>
                             </Border>
                         </DataTemplate>
