@@ -204,6 +204,8 @@
           </Key>
           <Property Name="ClientId" Type="int" Nullable="false" />
           <Property Name="IGId" Type="int" Nullable="false" />
+          <Property Name="InvalidDate" Type="datetime" />
+          <Property Name="InvalidFirst" Type="bit" />
         </EntityType>
         <EntityType Name="InvalidGroup">
           <Key>
@@ -286,6 +288,49 @@
           <Property Name="WorkerPatronimic" Type="nvarchar" MaxLength="30" />
           <Property Name="WorkerPhone" Type="nvarchar" MaxLength="15" />
           <Property Name="Login" Type="nvarchar" MaxLength="30" Nullable="false" />
+        </EntityType>
+        <!--Ошибки, обнаруженные при создании:
+предупреждение 6002: В таблице или представлении "CourseWork.dbo.AllAboutClientView" не определен первичный ключ. Ключ был выведен, а определение таблицы или представления было создано в режиме только для чтения.-->
+        <EntityType Name="AllAboutClientView">
+          <Key>
+            <PropertyRef Name="ClientId" />
+            <PropertyRef Name="CLientLN" />
+            <PropertyRef Name="ClientFN" />
+            <PropertyRef Name="Busyness" />
+            <PropertyRef Name="Education" />
+            <PropertyRef Name="Position" />
+            <PropertyRef Name="InsuranceName" />
+            <PropertyRef Name="PassportSeria" />
+            <PropertyRef Name="PassportNumber" />
+            <PropertyRef Name="PassportWho" />
+            <PropertyRef Name="PassportDate" />
+            <PropertyRef Name="PolisSeries" />
+            <PropertyRef Name="PolisNumber" />
+          </Key>
+          <Property Name="ClientId" Type="int" Nullable="false" />
+          <Property Name="CLientLN" Type="nvarchar" MaxLength="30" Nullable="false" />
+          <Property Name="ClientFN" Type="nvarchar" MaxLength="30" Nullable="false" />
+          <Property Name="ClientPatronomic" Type="nvarchar" MaxLength="30" />
+          <Property Name="ClientGender" Type="bit" />
+          <Property Name="ClientHB" Type="datetime" />
+          <Property Name="ClientAddress" Type="nvarchar" MaxLength="150" />
+          <Property Name="ClientPhone" Type="nvarchar" MaxLength="11" />
+          <Property Name="ClientSnils" Type="nvarchar" MaxLength="15" />
+          <Property Name="ClientWorkPlaceAndPost" Type="nvarchar" MaxLength="100" />
+          <Property Name="ClientBloodGroup" Type="nvarchar" MaxLength="4" />
+          <Property Name="ClientRh-" Type="bit" />
+          <Property Name="Allergy" Type="nvarchar" MaxLength="100" />
+          <Property Name="Email" Type="nvarchar" MaxLength="100" />
+          <Property Name="Busyness" Type="nvarchar" MaxLength="30" Nullable="false" />
+          <Property Name="Education" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="Position" Type="nvarchar" MaxLength="30" Nullable="false" />
+          <Property Name="InsuranceName" Type="nvarchar" MaxLength="60" Nullable="false" />
+          <Property Name="PassportSeria" Type="nvarchar" MaxLength="5" Nullable="false" />
+          <Property Name="PassportNumber" Type="nvarchar" MaxLength="7" Nullable="false" />
+          <Property Name="PassportWho" Type="nvarchar" MaxLength="60" Nullable="false" />
+          <Property Name="PassportDate" Type="datetime" Nullable="false" />
+          <Property Name="PolisSeries" Type="nvarchar" MaxLength="6" Nullable="false" />
+          <Property Name="PolisNumber" Type="nvarchar" MaxLength="10" Nullable="false" />
         </EntityType>
         <Association Name="FK__Applicati__PayWa__10566F31">
           <End Role="PayWay" Type="Self.PayWay" Multiplicity="1" />
@@ -567,7 +612,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Invalid__ClientI__02084FDA">
+        <Association Name="FK__Invalid__ClientI__3C34F16F">
           <End Role="Client" Type="Self.Client" Multiplicity="1" />
           <End Role="Invalid" Type="Self.Invalid" Multiplicity="*" />
           <ReferentialConstraint>
@@ -579,7 +624,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Invalid__IGId__160F4887">
+        <Association Name="FK__Invalid__IGId__3D2915A8">
           <End Role="InvalidGroup" Type="Self.InvalidGroup" Multiplicity="1" />
           <End Role="Invalid" Type="Self.Invalid" Multiplicity="*" />
           <ReferentialConstraint>
@@ -739,6 +784,34 @@
     [Requsites].[BankId] AS [BankId]
     FROM [dbo].[Requsites] AS [Requsites]</DefiningQuery>
           </EntitySet>
+          <EntitySet Name="AllAboutClientView" EntityType="Self.AllAboutClientView" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [AllAboutClientView].[ClientId] AS [ClientId], 
+    [AllAboutClientView].[CLientLN] AS [CLientLN], 
+    [AllAboutClientView].[ClientFN] AS [ClientFN], 
+    [AllAboutClientView].[ClientPatronomic] AS [ClientPatronomic], 
+    [AllAboutClientView].[ClientGender] AS [ClientGender], 
+    [AllAboutClientView].[ClientHB] AS [ClientHB], 
+    [AllAboutClientView].[ClientAddress] AS [ClientAddress], 
+    [AllAboutClientView].[ClientPhone] AS [ClientPhone], 
+    [AllAboutClientView].[ClientSnils] AS [ClientSnils], 
+    [AllAboutClientView].[ClientWorkPlaceAndPost] AS [ClientWorkPlaceAndPost], 
+    [AllAboutClientView].[ClientBloodGroup] AS [ClientBloodGroup], 
+    [AllAboutClientView].[ClientRh-] AS [ClientRh-], 
+    [AllAboutClientView].[Allergy] AS [Allergy], 
+    [AllAboutClientView].[Email] AS [Email], 
+    [AllAboutClientView].[Busyness] AS [Busyness], 
+    [AllAboutClientView].[Education] AS [Education], 
+    [AllAboutClientView].[Position] AS [Position], 
+    [AllAboutClientView].[InsuranceName] AS [InsuranceName], 
+    [AllAboutClientView].[PassportSeria] AS [PassportSeria], 
+    [AllAboutClientView].[PassportNumber] AS [PassportNumber], 
+    [AllAboutClientView].[PassportWho] AS [PassportWho], 
+    [AllAboutClientView].[PassportDate] AS [PassportDate], 
+    [AllAboutClientView].[PolisSeries] AS [PolisSeries], 
+    [AllAboutClientView].[PolisNumber] AS [PolisNumber]
+    FROM [dbo].[AllAboutClientView] AS [AllAboutClientView]</DefiningQuery>
+          </EntitySet>
           <AssociationSet Name="FK__Applicati__PayWa__10566F31" Association="Self.FK__Applicati__PayWa__10566F31">
             <End Role="PayWay" EntitySet="PayWay" />
             <End Role="Application" EntitySet="Application" />
@@ -831,11 +904,11 @@
             <End Role="Guardian" EntitySet="Guardian" />
             <End Role="GuardianPassport" EntitySet="GuardianPassport" />
           </AssociationSet>
-          <AssociationSet Name="FK__Invalid__ClientI__02084FDA" Association="Self.FK__Invalid__ClientI__02084FDA">
+          <AssociationSet Name="FK__Invalid__ClientI__3C34F16F" Association="Self.FK__Invalid__ClientI__3C34F16F">
             <End Role="Client" EntitySet="Client" />
             <End Role="Invalid" EntitySet="Invalid" />
           </AssociationSet>
-          <AssociationSet Name="FK__Invalid__IGId__160F4887" Association="Self.FK__Invalid__IGId__160F4887">
+          <AssociationSet Name="FK__Invalid__IGId__3D2915A8" Association="Self.FK__Invalid__IGId__3D2915A8">
             <End Role="InvalidGroup" EntitySet="InvalidGroup" />
             <End Role="Invalid" EntitySet="Invalid" />
           </AssociationSet>
@@ -1005,10 +1078,10 @@
           <NavigationProperty Name="ClientRequsites" Relationship="Self.FK__ClientReq__Clien__00200768" FromRole="Client" ToRole="ClientRequsites" />
           <NavigationProperty Name="Document" Relationship="Self.FK__Document__Client__7D439ABD" FromRole="Client" ToRole="Document" />
           <NavigationProperty Name="Guardian" Relationship="Self.FK__Guardian__Client__2B0A656D" FromRole="Client" ToRole="Guardian" />
+          <NavigationProperty Name="Invalid" Relationship="Self.FK__Invalid__ClientI__3C34F16F" FromRole="Client" ToRole="Invalid" />
           <NavigationProperty Name="Passport" Relationship="Self.FK__Passport__Client__7C4F7684" FromRole="Client" ToRole="Passport" />
           <NavigationProperty Name="Polis" Relationship="Self.FK__Polis__ClientId__7E37BEF6" FromRole="Client" ToRole="Polis" />
           <NavigationProperty Name="Approval" Relationship="Self.ClientApproval" FromRole="Client" ToRole="Approval" />
-          <NavigationProperty Name="InvalidGroup" Relationship="Self.Invalid" FromRole="Client" ToRole="InvalidGroup" />
         </EntityType>
         <EntityType Name="ClientRequsites">
           <Key>
@@ -1102,13 +1175,25 @@
           <Property Name="InsuranceAddress" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Client" Relationship="Self.FK__Client__Insuranc__0A9D95DB" FromRole="Insurance" ToRole="Client" />
         </EntityType>
+        <EntityType Name="Invalid">
+          <Key>
+            <PropertyRef Name="ClientId" />
+            <PropertyRef Name="IGId" />
+          </Key>
+          <Property Name="ClientId" Type="Int32" Nullable="false" />
+          <Property Name="IGId" Type="Int32" Nullable="false" />
+          <Property Name="InvalidDate" Type="DateTime" Precision="3" />
+          <Property Name="InvalidFirst" Type="Boolean" />
+          <NavigationProperty Name="Client" Relationship="Self.FK__Invalid__ClientI__3C34F16F" FromRole="Invalid" ToRole="Client" />
+          <NavigationProperty Name="InvalidGroup" Relationship="Self.FK__Invalid__IGId__3D2915A8" FromRole="Invalid" ToRole="InvalidGroup" />
+        </EntityType>
         <EntityType Name="InvalidGroup">
           <Key>
             <PropertyRef Name="IGId" />
           </Key>
           <Property Name="IGId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="IGName" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
-          <NavigationProperty Name="Client" Relationship="Self.Invalid" FromRole="InvalidGroup" ToRole="Client" />
+          <NavigationProperty Name="Invalid" Relationship="Self.FK__Invalid__IGId__3D2915A8" FromRole="InvalidGroup" ToRole="Invalid" />
         </EntityType>
         <EntityType Name="Passport">
           <Key>
@@ -1196,6 +1281,47 @@
           <Property Name="Address" Type="String" MaxLength="60" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="BankId" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Bank" Relationship="Self.FK__Requsites__BankI__14270015" FromRole="Requsites" ToRole="Bank" />
+        </EntityType>
+        <EntityType Name="AllAboutClientView">
+          <Key>
+            <PropertyRef Name="ClientId" />
+            <PropertyRef Name="CLientLN" />
+            <PropertyRef Name="ClientFN" />
+            <PropertyRef Name="Busyness" />
+            <PropertyRef Name="Education" />
+            <PropertyRef Name="Position" />
+            <PropertyRef Name="InsuranceName" />
+            <PropertyRef Name="PassportSeria" />
+            <PropertyRef Name="PassportNumber" />
+            <PropertyRef Name="PassportWho" />
+            <PropertyRef Name="PassportDate" />
+            <PropertyRef Name="PolisSeries" />
+            <PropertyRef Name="PolisNumber" />
+          </Key>
+          <Property Name="ClientId" Type="Int32" Nullable="false" />
+          <Property Name="CLientLN" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ClientFN" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ClientPatronomic" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="ClientGender" Type="Boolean" />
+          <Property Name="ClientHB" Type="DateTime" Precision="3" />
+          <Property Name="ClientAddress" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="ClientPhone" Type="String" MaxLength="11" FixedLength="false" Unicode="true" />
+          <Property Name="ClientSnils" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Name="ClientWorkPlaceAndPost" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="ClientBloodGroup" Type="String" MaxLength="4" FixedLength="false" Unicode="true" />
+          <Property Name="ClientRh_" Type="Boolean" />
+          <Property Name="Allergy" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Busyness" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Education" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Position" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="InsuranceName" Type="String" MaxLength="60" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="PassportSeria" Type="String" MaxLength="5" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="PassportNumber" Type="String" MaxLength="7" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="PassportWho" Type="String" MaxLength="60" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="PassportDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="PolisSeries" Type="String" MaxLength="6" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="PolisNumber" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
         </EntityType>
         <Association Name="FK__Applicati__PayWa__10566F31">
           <End Role="PayWay" Type="Self.PayWay" Multiplicity="1" />
@@ -1451,6 +1577,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK__Invalid__ClientI__3C34F16F">
+          <End Role="Client" Type="Self.Client" Multiplicity="1" />
+          <End Role="Invalid" Type="Self.Invalid" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Client">
+              <PropertyRef Name="ClientId" />
+            </Principal>
+            <Dependent Role="Invalid">
+              <PropertyRef Name="ClientId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK__Passport__Client__7C4F7684">
           <End Role="Client" Type="Self.Client" Multiplicity="1" />
           <End Role="Passport" Type="Self.Passport" Multiplicity="0..1" />
@@ -1513,6 +1651,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK__Invalid__IGId__3D2915A8">
+          <End Role="InvalidGroup" Type="Self.InvalidGroup" Multiplicity="1" />
+          <End Role="Invalid" Type="Self.Invalid" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="InvalidGroup">
+              <PropertyRef Name="IGId" />
+            </Principal>
+            <Dependent Role="Invalid">
+              <PropertyRef Name="IGId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK__Worker__PostId__09A971A2">
           <End Role="Post" Type="Self.Post" Multiplicity="1" />
           <End Role="Worker" Type="Self.Worker" Multiplicity="*" />
@@ -1541,11 +1691,7 @@
           <End Role="Approval" Type="Self.Approval" Multiplicity="*" />
           <End Role="Client" Type="Self.Client" Multiplicity="*" />
         </Association>
-        <Association Name="Invalid">
-          <End Role="Client" Type="Self.Client" Multiplicity="*" />
-          <End Role="InvalidGroup" Type="Self.InvalidGroup" Multiplicity="*" />
-        </Association>
-        <EntityContainer Name="CourseWorkEntities" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="CourseWorkEntities2" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Application" EntityType="Self.Application" />
           <EntitySet Name="Approval" EntityType="Self.Approval" />
           <EntitySet Name="Bank" EntityType="Self.Bank" />
@@ -1565,6 +1711,7 @@
           <EntitySet Name="Guardian" EntityType="Self.Guardian" />
           <EntitySet Name="GuardianPassport" EntityType="Self.GuardianPassport" />
           <EntitySet Name="Insurance" EntityType="Self.Insurance" />
+          <EntitySet Name="Invalid" EntityType="Self.Invalid" />
           <EntitySet Name="InvalidGroup" EntityType="Self.InvalidGroup" />
           <EntitySet Name="Passport" EntityType="Self.Passport" />
           <EntitySet Name="PayWay" EntityType="Self.PayWay" />
@@ -1574,6 +1721,7 @@
           <EntitySet Name="Service" EntityType="Self.Service" />
           <EntitySet Name="Worker" EntityType="Self.Worker" />
           <EntitySet Name="Requsites" EntityType="Self.Requsites" />
+          <EntitySet Name="AllAboutClientView" EntityType="Self.AllAboutClientView" />
           <AssociationSet Name="FK__Applicati__PayWa__10566F31" Association="Self.FK__Applicati__PayWa__10566F31">
             <End Role="PayWay" EntitySet="PayWay" />
             <End Role="Application" EntitySet="Application" />
@@ -1658,6 +1806,10 @@
             <End Role="Client" EntitySet="Client" />
             <End Role="Guardian" EntitySet="Guardian" />
           </AssociationSet>
+          <AssociationSet Name="FK__Invalid__ClientI__3C34F16F" Association="Self.FK__Invalid__ClientI__3C34F16F">
+            <End Role="Client" EntitySet="Client" />
+            <End Role="Invalid" EntitySet="Invalid" />
+          </AssociationSet>
           <AssociationSet Name="FK__Passport__Client__7C4F7684" Association="Self.FK__Passport__Client__7C4F7684">
             <End Role="Client" EntitySet="Client" />
             <End Role="Passport" EntitySet="Passport" />
@@ -1678,6 +1830,10 @@
             <End Role="Guardian" EntitySet="Guardian" />
             <End Role="GuardianPassport" EntitySet="GuardianPassport" />
           </AssociationSet>
+          <AssociationSet Name="FK__Invalid__IGId__3D2915A8" Association="Self.FK__Invalid__IGId__3D2915A8">
+            <End Role="InvalidGroup" EntitySet="InvalidGroup" />
+            <End Role="Invalid" EntitySet="Invalid" />
+          </AssociationSet>
           <AssociationSet Name="FK__Worker__PostId__09A971A2" Association="Self.FK__Worker__PostId__09A971A2">
             <End Role="Post" EntitySet="Post" />
             <End Role="Worker" EntitySet="Worker" />
@@ -1689,10 +1845,6 @@
           <AssociationSet Name="ClientApproval" Association="Self.ClientApproval">
             <End Role="Approval" EntitySet="Approval" />
             <End Role="Client" EntitySet="Client" />
-          </AssociationSet>
-          <AssociationSet Name="Invalid" Association="Self.Invalid">
-            <End Role="Client" EntitySet="Client" />
-            <End Role="InvalidGroup" EntitySet="InvalidGroup" />
           </AssociationSet>
           <FunctionImport Name="AddApplication">
             <Parameter Name="DocumentId" Mode="In" Type="Int32" />
@@ -1726,7 +1878,7 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="Хранилище CourseWorkModelContainer" CdmEntityContainer="CourseWorkEntities">
+        <EntityContainerMapping StorageEntityContainer="Хранилище CourseWorkModelContainer" CdmEntityContainer="CourseWorkEntities2">
           <EntitySetMapping Name="Application">
             <EntityTypeMapping TypeName="CourseWorkModel.Application">
               <MappingFragment StoreEntitySet="Application">
@@ -1924,6 +2076,16 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="Invalid">
+            <EntityTypeMapping TypeName="CourseWorkModel.Invalid">
+              <MappingFragment StoreEntitySet="Invalid">
+                <ScalarProperty Name="ClientId" ColumnName="ClientId" />
+                <ScalarProperty Name="IGId" ColumnName="IGId" />
+                <ScalarProperty Name="InvalidDate" ColumnName="InvalidDate" />
+                <ScalarProperty Name="InvalidFirst" ColumnName="InvalidFirst" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="InvalidGroup">
             <EntityTypeMapping TypeName="CourseWorkModel.InvalidGroup">
               <MappingFragment StoreEntitySet="InvalidGroup">
@@ -2010,20 +2172,42 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="AllAboutClientView">
+            <EntityTypeMapping TypeName="CourseWorkModel.AllAboutClientView">
+              <MappingFragment StoreEntitySet="AllAboutClientView">
+                <ScalarProperty Name="ClientId" ColumnName="ClientId" />
+                <ScalarProperty Name="CLientLN" ColumnName="CLientLN" />
+                <ScalarProperty Name="ClientFN" ColumnName="ClientFN" />
+                <ScalarProperty Name="ClientPatronomic" ColumnName="ClientPatronomic" />
+                <ScalarProperty Name="ClientGender" ColumnName="ClientGender" />
+                <ScalarProperty Name="ClientHB" ColumnName="ClientHB" />
+                <ScalarProperty Name="ClientAddress" ColumnName="ClientAddress" />
+                <ScalarProperty Name="ClientPhone" ColumnName="ClientPhone" />
+                <ScalarProperty Name="ClientSnils" ColumnName="ClientSnils" />
+                <ScalarProperty Name="ClientWorkPlaceAndPost" ColumnName="ClientWorkPlaceAndPost" />
+                <ScalarProperty Name="ClientBloodGroup" ColumnName="ClientBloodGroup" />
+                <ScalarProperty Name="ClientRh_" ColumnName="ClientRh-" />
+                <ScalarProperty Name="Allergy" ColumnName="Allergy" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Busyness" ColumnName="Busyness" />
+                <ScalarProperty Name="Education" ColumnName="Education" />
+                <ScalarProperty Name="Position" ColumnName="Position" />
+                <ScalarProperty Name="InsuranceName" ColumnName="InsuranceName" />
+                <ScalarProperty Name="PassportSeria" ColumnName="PassportSeria" />
+                <ScalarProperty Name="PassportNumber" ColumnName="PassportNumber" />
+                <ScalarProperty Name="PassportWho" ColumnName="PassportWho" />
+                <ScalarProperty Name="PassportDate" ColumnName="PassportDate" />
+                <ScalarProperty Name="PolisSeries" ColumnName="PolisSeries" />
+                <ScalarProperty Name="PolisNumber" ColumnName="PolisNumber" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <AssociationSetMapping Name="ClientApproval" TypeName="CourseWorkModel.ClientApproval" StoreEntitySet="ClientApproval">
             <EndProperty Name="Approval">
               <ScalarProperty Name="ApprovalId" ColumnName="ApprovalId" />
             </EndProperty>
             <EndProperty Name="Client">
               <ScalarProperty Name="ClientId" ColumnName="ClientId" />
-            </EndProperty>
-          </AssociationSetMapping>
-          <AssociationSetMapping Name="Invalid" TypeName="CourseWorkModel.Invalid" StoreEntitySet="Invalid">
-            <EndProperty Name="Client">
-              <ScalarProperty Name="ClientId" ColumnName="ClientId" />
-            </EndProperty>
-            <EndProperty Name="InvalidGroup">
-              <ScalarProperty Name="IGId" ColumnName="IGId" />
             </EndProperty>
           </AssociationSetMapping>
           <FunctionImportMapping FunctionImportName="AddApplication" FunctionName="Хранилище CourseWorkModel.AddApplication" />

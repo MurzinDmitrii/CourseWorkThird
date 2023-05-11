@@ -32,6 +32,7 @@
                                     <StackPanel.ContextMenu>
                                         <ContextMenu>
                                             <MenuItem Header="Перейти к карте" Click="MenuItem_Click"/>
+                                            <MenuItem Header="Распечатать карту" Click="MenuItem_Click_1"/>
                                         </ContextMenu>
                                     </StackPanel.ContextMenu>
                                 </StackPanel>

@@ -69,5 +69,15 @@ namespace Курсач.Properties {
                 return ((byte[])(obj));
             }
         }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Byte[].
+        /// </summary>
+        internal static byte[] MedCardDoc {
+            get {
+                object obj = ResourceManager.GetObject("MedCardDoc", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
     }
 }

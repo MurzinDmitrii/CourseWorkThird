@@ -12,18 +12,14 @@ namespace Курсач.Model
     using System;
     using System.Collections.Generic;
     
-    public partial class InvalidGroup
+    public partial class Invalid
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public InvalidGroup()
-        {
-            this.Invalid = new HashSet<Invalid>();
-        }
-    
+        public int ClientId { get; set; }
         public int IGId { get; set; }
-        public string IGName { get; set; }
+        public Nullable<System.DateTime> InvalidDate { get; set; }
+        public Nullable<bool> InvalidFirst { get; set; }
     
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Invalid> Invalid { get; set; }
+        public virtual Client Client { get; set; }
+        public virtual InvalidGroup InvalidGroup { get; set; }
     }
 }

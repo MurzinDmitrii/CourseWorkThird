@@ -20,8 +20,8 @@ namespace Курсач.Model
             this.Card = new HashSet<Card>();
             this.Document = new HashSet<Document>();
             this.Guardian = new HashSet<Guardian>();
+            this.Invalid = new HashSet<Invalid>();
             this.Approval = new HashSet<Approval>();
-            this.InvalidGroup = new HashSet<InvalidGroup>();
         }
     
         public int ClientId { get; set; }
@@ -55,11 +55,11 @@ namespace Курсач.Model
         public virtual ICollection<Document> Document { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Guardian> Guardian { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Invalid> Invalid { get; set; }
         public virtual Passport Passport { get; set; }
         public virtual Polis Polis { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Approval> Approval { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<InvalidGroup> InvalidGroup { get; set; }
     }
 }

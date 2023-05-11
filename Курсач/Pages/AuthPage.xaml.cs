@@ -40,10 +40,10 @@ namespace Курсач.Pages
                     LoginBox.Text = "";
                     Worker worker = DB.entities.Worker.FirstOrDefault(c => c.Login == enterData.Login);
                     Properties.Settings.Default.WorkerId = worker.WorkerId;
-                    if (worker.Post.PostName == "Врач")
-                        NavigationService.Navigate(new DoctorPage());
-                    if (worker.Post.PostName == "Бухгалтер")
+                    if (worker.Post.PostName == "Менеджер")
                         NavigationService.Navigate(new AccountantPage());
+                    else
+                        NavigationService.Navigate(new DoctorPage());
                 }
                 return;
             }

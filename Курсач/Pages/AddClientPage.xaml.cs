@@ -125,9 +125,9 @@ namespace Курсач.Pages
                 DB.entities.SaveChanges();
                 NavigationService.GoBack();
             }
-            catch
+            catch (Exception ex)
             {
-                MessageBox.Show("Корректно заполните поля!", "Ошибка!", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show(ex.InnerException.InnerException.Message, "Ошибка!", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
 

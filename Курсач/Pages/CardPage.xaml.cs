@@ -34,6 +34,7 @@ namespace Курсач.Pages
             {
                 card = new Card();
                 newClient = true;
+                card.ClientLook = false;
             }
             this.DataContext = card;
             for (int i = 1; i <= 4; i++)

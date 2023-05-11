@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Курсач.Classes;
 using Курсач.Model;
 
 namespace Курсач.Pages
@@ -61,5 +62,19 @@ namespace Курсач.Pages
             NavigationService.Navigate(new CardPage(client));
         }
 
+        private void MenuItem_Click_1(object sender, RoutedEventArgs e)
+        {
+            MenuItem item = (MenuItem)sender;
+            Client client = item.DataContext as Client;
+            Card card = DB.entities.Card.FirstOrDefault(c => c.ClientId == client.ClientId);
+            if(card != null)
+            {
+                PrintMedCard.OutputMedCard(card);
+            }
+            else
+            {
+                MessageBox.Show("Медкарта еще не заведена", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+        }
     }
 }

@@ -15,10 +15,10 @@ namespace Курсач.Model
     using System.Data.Entity.Core.Objects;
     using System.Linq;
     
-    public partial class CourseWorkEntities : DbContext
+    public partial class CourseWorkEntities2 : DbContext
     {
-        public CourseWorkEntities()
-            : base("name=CourseWorkEntities")
+        public CourseWorkEntities2()
+            : base("name=CourseWorkEntities2")
         {
         }
     
@@ -46,6 +46,7 @@ namespace Курсач.Model
         public virtual DbSet<Guardian> Guardian { get; set; }
         public virtual DbSet<GuardianPassport> GuardianPassport { get; set; }
         public virtual DbSet<Insurance> Insurance { get; set; }
+        public virtual DbSet<Invalid> Invalid { get; set; }
         public virtual DbSet<InvalidGroup> InvalidGroup { get; set; }
         public virtual DbSet<Passport> Passport { get; set; }
         public virtual DbSet<PayWay> PayWay { get; set; }
@@ -55,6 +56,7 @@ namespace Курсач.Model
         public virtual DbSet<Service> Service { get; set; }
         public virtual DbSet<Worker> Worker { get; set; }
         public virtual DbSet<Requsites> Requsites { get; set; }
+        public virtual DbSet<AllAboutClientView> AllAboutClientView { get; set; }
     
         public virtual int AddApplication(Nullable<int> documentId, Nullable<System.DateTime> documentDate, Nullable<int> serviceId, Nullable<System.DateTime> applicationDate, Nullable<int> payWayId)
         {

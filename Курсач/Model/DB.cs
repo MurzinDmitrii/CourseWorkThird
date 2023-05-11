@@ -8,6 +8,6 @@ namespace Курсач.Model
 {
     public class DB
     {
-        public static CourseWorkEntities entities = new CourseWorkEntities();
+        public static CourseWorkEntities2 entities = new CourseWorkEntities2();
     }
 }
