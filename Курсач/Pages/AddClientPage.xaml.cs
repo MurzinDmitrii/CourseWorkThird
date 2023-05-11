@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity.Validation;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -22,6 +24,7 @@ namespace Курсач.Pages
     public partial class AddClientPage : Page
     {
         Client cl;
+        Guardian guardian;
         public AddClientPage()
         {
             cl = new Client();
@@ -29,7 +32,6 @@ namespace Курсач.Pages
             cl.ClientGender = false;
             cl.Passport = new Passport();
             cl.Polis = new Polis();
-            cl.Benefits = new Benefits();
             this.DataContext = cl;
             InitializeComponent();
             FamilyBox.ItemsSource = DB.entities.FamilyPosition.ToList();
@@ -50,6 +52,12 @@ namespace Курсач.Pages
             cl = application.Document.Client;
             this.DataContext = cl;
             InitializeComponent();
+            guardian = DB.entities.Guardian.FirstOrDefault(c => c.ClientId == cl.ClientId);
+            if (guardian != null)
+            {
+                GuardianBox.DataContext = guardian;
+                GuarCheckBox.IsChecked = true;
+            }
             FamilyBox.ItemsSource = DB.entities.FamilyPosition.ToList();
             EducationBox.ItemsSource = DB.entities.Education.ToList();
             BusyBox.ItemsSource = DB.entities.Busyness.ToList();
@@ -83,10 +91,44 @@ namespace Курсач.Pages
             }
             cl.ClientBloodGroup = GroupBloodBox.SelectedItem.ToString();
             cl.ClientHB = HBBox.SelectedDate;
-            cl.Passport.PassportDate = PassportDateBox.SelectedDate;
+            cl.Passport.PassportDate = (DateTime)PassportDateBox.SelectedDate;
             if (cl.ClientId == 0)DB.entities.Client.Add(cl);
-            DB.entities.SaveChanges();
-            NavigationService.GoBack();
+            if (!string.IsNullOrEmpty(PrivilegesSeryBox.Text))
+            {
+                cl.Benefits = new Benefits();
+            }
+            if (guardian != null && guardian.GuardianId == 0 && cl.ClientId == 0)
+            {
+                guardian.GuardianPassport = new GuardianPassport();
+                var GuarList = DB.entities.Client.ToList();
+                guardian.ClientId = GuarList.Count+1;
+                Guardian guar = DB.entities.Guardian.FirstOrDefault(x => x.ClientId == guardian.ClientId);
+                DB.entities.AddGuardian
+                    (guardian.GuardianFullName, guardian.ClientId, guardian.GuardianAddress, guardian.GuardianPhone);
+                DB.entities.AddGuardianPassport(GuardianPassportSeryBox.Text, GuardianPassportNumberBox.Text,
+                    GuardianAddresBox.Text, GuardianPassportDateBox.SelectedDate,
+                    guardian.ClientId, guar.GuardianId);
+            }
+            if (guardian != null && guardian.GuardianId == 0)
+            {
+                guardian.GuardianPassport = new GuardianPassport();
+                guardian.ClientId = cl.ClientId;
+                DB.entities.AddGuardian
+                    (guardian.GuardianFullName, guardian.ClientId, guardian.GuardianAddress, guardian.GuardianPhone);
+                Guardian guar = DB.entities.Guardian.FirstOrDefault(x => x.ClientId == guardian.ClientId);
+                DB.entities.AddGuardianPassport(GuardianPassportSeryBox.Text, GuardianPassportNumberBox.Text,
+                    GuardianAddresBox.Text, GuardianPassportDateBox.SelectedDate,
+                    guardian.ClientId, guar.GuardianId);
+            }
+            try
+            {
+                DB.entities.SaveChanges();
+                NavigationService.GoBack();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.InnerException.InnerException.Message, "Ошибка!", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
         }
 
         private void PhoneBox_PreviewTextInput(object sender, TextCompositionEventArgs e)
@@ -95,6 +137,21 @@ namespace Курсач.Pages
             {
                 e.Handled = true;
             }
+        }
+
+        private void CheckBox_Checked(object sender, RoutedEventArgs e)
+        {
+            GuardianBox.Visibility = Visibility.Visible;
+            if(guardian == null)
+            {
+                guardian = new Guardian();
+                GuardianBox.DataContext = guardian;
+            }
+        }
+
+        private void CheckBox_Unchecked(object sender, RoutedEventArgs e)
+        {
+            GuardianBox.Visibility = Visibility.Collapsed;
         }
     }
 }

@@ -15,10 +15,10 @@ namespace Курсач.Model
     using System.Data.Entity.Core.Objects;
     using System.Linq;
     
-    public partial class КурсоваяEntities2 : DbContext
+    public partial class CourseWorkEntities2 : DbContext
     {
-        public КурсоваяEntities2()
-            : base("name=КурсоваяEntities2")
+        public CourseWorkEntities2()
+            : base("name=CourseWorkEntities2")
         {
         }
     
@@ -34,6 +34,7 @@ namespace Курсач.Model
         public virtual DbSet<BenefitsCategory> BenefitsCategory { get; set; }
         public virtual DbSet<Busyness> Busyness { get; set; }
         public virtual DbSet<Card> Card { get; set; }
+        public virtual DbSet<CardTablePart> CardTablePart { get; set; }
         public virtual DbSet<Category> Category { get; set; }
         public virtual DbSet<Client> Client { get; set; }
         public virtual DbSet<ClientRequsites> ClientRequsites { get; set; }
@@ -42,7 +43,10 @@ namespace Курсач.Model
         public virtual DbSet<Education> Education { get; set; }
         public virtual DbSet<EnterData> EnterData { get; set; }
         public virtual DbSet<FamilyPosition> FamilyPosition { get; set; }
+        public virtual DbSet<Guardian> Guardian { get; set; }
+        public virtual DbSet<GuardianPassport> GuardianPassport { get; set; }
         public virtual DbSet<Insurance> Insurance { get; set; }
+        public virtual DbSet<Invalid> Invalid { get; set; }
         public virtual DbSet<InvalidGroup> InvalidGroup { get; set; }
         public virtual DbSet<Passport> Passport { get; set; }
         public virtual DbSet<PayWay> PayWay { get; set; }
@@ -52,6 +56,7 @@ namespace Курсач.Model
         public virtual DbSet<Service> Service { get; set; }
         public virtual DbSet<Worker> Worker { get; set; }
         public virtual DbSet<Requsites> Requsites { get; set; }
+        public virtual DbSet<AllAboutClientView> AllAboutClientView { get; set; }
     
         public virtual int AddApplication(Nullable<int> documentId, Nullable<System.DateTime> documentDate, Nullable<int> serviceId, Nullable<System.DateTime> applicationDate, Nullable<int> payWayId)
         {
@@ -93,6 +98,56 @@ namespace Курсач.Model
                 new ObjectParameter("WorkerId", typeof(int));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("AddDocument", documentDateParameter, clientIdParameter, workerIdParameter);
+        }
+    
+        public virtual int AddGuardian(string fullName, Nullable<int> clientId, string address, string phone)
+        {
+            var fullNameParameter = fullName != null ?
+                new ObjectParameter("FullName", fullName) :
+                new ObjectParameter("FullName", typeof(string));
+    
+            var clientIdParameter = clientId.HasValue ?
+                new ObjectParameter("ClientId", clientId) :
+                new ObjectParameter("ClientId", typeof(int));
+    
+            var addressParameter = address != null ?
+                new ObjectParameter("Address", address) :
+                new ObjectParameter("Address", typeof(string));
+    
+            var phoneParameter = phone != null ?
+                new ObjectParameter("Phone", phone) :
+                new ObjectParameter("Phone", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("AddGuardian", fullNameParameter, clientIdParameter, addressParameter, phoneParameter);
+        }
+    
+        public virtual int AddGuardianPassport(string sery, string number, string address, Nullable<System.DateTime> date, Nullable<int> client, Nullable<int> guardian)
+        {
+            var seryParameter = sery != null ?
+                new ObjectParameter("Sery", sery) :
+                new ObjectParameter("Sery", typeof(string));
+    
+            var numberParameter = number != null ?
+                new ObjectParameter("Number", number) :
+                new ObjectParameter("Number", typeof(string));
+    
+            var addressParameter = address != null ?
+                new ObjectParameter("Address", address) :
+                new ObjectParameter("Address", typeof(string));
+    
+            var dateParameter = date.HasValue ?
+                new ObjectParameter("Date", date) :
+                new ObjectParameter("Date", typeof(System.DateTime));
+    
+            var clientParameter = client.HasValue ?
+                new ObjectParameter("Client", client) :
+                new ObjectParameter("Client", typeof(int));
+    
+            var guardianParameter = guardian.HasValue ?
+                new ObjectParameter("Guardian", guardian) :
+                new ObjectParameter("Guardian", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("AddGuardianPassport", seryParameter, numberParameter, addressParameter, dateParameter, clientParameter, guardianParameter);
         }
     }
 }

@@ -18,6 +18,7 @@ namespace Курсач.Model
         public Worker()
         {
             this.Card = new HashSet<Card>();
+            this.CardTablePart = new HashSet<CardTablePart>();
             this.Document = new HashSet<Document>();
         }
     
@@ -31,6 +32,8 @@ namespace Курсач.Model
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Card> Card { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<CardTablePart> CardTablePart { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Document> Document { get; set; }
         public virtual EnterData EnterData { get; set; }

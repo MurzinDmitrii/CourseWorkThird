@@ -31,19 +31,25 @@ namespace Курсач.Pages
 
         private void SaveButton_Click(object sender, RoutedEventArgs e)
         {
-            Client client = ClientBox.SelectedItem as Client;
-            Document document = DB.entities.Document.FirstOrDefault(c => c.ClientId == client.ClientId);
-            if (document == null)
+            try
             {
-                DB.entities.AddDocument(DateTime.Now, client.ClientId, Properties.Settings.Default.WorkerId);
-                document = DB.entities.Document.FirstOrDefault(c => c.ClientId == client.ClientId) as Document;
+                Client client = ClientBox.SelectedItem as Client;
+                Document document = DB.entities.Document.FirstOrDefault(c => c.ClientId == client.ClientId);
+                if (document == null)
+                {
+                    DB.entities.AddDocument(DateTime.Now, client.ClientId, Properties.Settings.Default.WorkerId);
+                    document = DB.entities.Document.FirstOrDefault(c => c.ClientId == client.ClientId) as Document;
+                }
+                Service service = ServiceBox.SelectedItem as Service;
+                DateTime applicationDate = DateBox.DisplayDate;
+                PayWay payWay = PayWayBox.SelectedItem as PayWay;
+                DB.entities.AddApplication(document.DocumentId, document.DocumentDate, service.ServiceId,
+                    applicationDate, payWay.PayWayId);  
             }
-            Service service = ServiceBox.SelectedItem as Service;
-            DateTime applicationDate = DateBox.DisplayDate;
-            PayWay payWay = PayWayBox.SelectedItem as PayWay;
-            DB.entities.AddApplication(document.DocumentId, document.DocumentDate, service.ServiceId,
-                applicationDate, payWay.PayWayId);
-
+            catch
+            {
+                MessageBox.Show("Корректно заполните поля!", "Ошибка!", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
             NavigationService.GoBack();
         }
     }

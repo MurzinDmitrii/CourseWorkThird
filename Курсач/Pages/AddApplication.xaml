@@ -28,7 +28,7 @@
                                   IsEditable="True" DisplayMemberPath="PayWayName" 
                                   SelectedItem="{Binding PayWay}"/>
                 <Button x:Name="SaveButton" Click="SaveButton_Click"
-                                Content="Сохранить" Margin="10" Width="100" Cursor="Hand"/>
+                                Content="Сохранить" Margin="10" Width="120" Cursor="Hand"/>
             </StackPanel>
         </Viewbox>
     </Grid>

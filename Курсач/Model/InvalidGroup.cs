@@ -17,13 +17,13 @@ namespace Курсач.Model
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public InvalidGroup()
         {
-            this.Client = new HashSet<Client>();
+            this.Invalid = new HashSet<Invalid>();
         }
     
         public int IGId { get; set; }
         public string IGName { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Client> Client { get; set; }
+        public virtual ICollection<Invalid> Invalid { get; set; }
     }
 }

@@ -4,57 +4,68 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="d63f68930b6a4173bb331828c1d729b1" Name="Diagram1">
-        <EntityTypeShape EntityType="КурсоваяModel.Application" Width="1.5" PointX="7.5" PointY="15.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="КурсоваяModel.Approval" Width="1.5" PointX="0.75" PointY="12.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="КурсоваяModel.Bank" Width="1.5" PointX="3" PointY="7.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="КурсоваяModel.Benefits" Width="1.5" PointX="5.25" PointY="12" IsExpanded="true" />
-        <EntityTypeShape EntityType="КурсоваяModel.BenefitsCategory" Width="1.5" PointX="3" PointY="17.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="КурсоваяModel.Busyness" Width="1.5" PointX="0.75" PointY="8.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="КурсоваяModel.Card" Width="1.5" PointX="8.25" PointY="11.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="КурсоваяModel.Category" Width="1.5" PointX="3" PointY="30.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="КурсоваяModel.Client" Width="1.5" PointX="3" PointY="9.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="КурсоваяModel.ClientRequsites" Width="1.5" PointX="5.25" PointY="9.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="КурсоваяModel.Desiase" Width="1.5" PointX="6" PointY="6" IsExpanded="true" />
-        <EntityTypeShape EntityType="КурсоваяModel.Document" Width="1.5" PointX="5.25" PointY="15" IsExpanded="true" />
-        <EntityTypeShape EntityType="КурсоваяModel.Education" Width="1.5" PointX="0.75" PointY="15" IsExpanded="true" />
-        <EntityTypeShape EntityType="КурсоваяModel.EnterData" Width="1.5" PointX="3.75" PointY="4.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="КурсоваяModel.FamilyPosition" Width="1.5" PointX="0.75" PointY="17.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="КурсоваяModel.Insurance" Width="1.5" PointX="0.75" PointY="19.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="КурсоваяModel.InvalidGroup" Width="1.5" PointX="5.25" PointY="21.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="КурсоваяModel.Passport" Width="1.5" PointX="5.25" PointY="24" IsExpanded="true" />
-        <EntityTypeShape EntityType="КурсоваяModel.PayWay" Width="1.5" PointX="5.25" PointY="18.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="КурсоваяModel.Polis" Width="1.5" PointX="5.25" PointY="27" IsExpanded="true" />
-        <EntityTypeShape EntityType="КурсоваяModel.Post" Width="1.5" PointX="3.75" PointY="2" IsExpanded="true" />
-        <EntityTypeShape EntityType="КурсоваяModel.Price" Width="1.5" PointX="7.5" PointY="30.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="КурсоваяModel.Service" Width="1.5" PointX="5.25" PointY="30.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="КурсоваяModel.Worker" Width="1.5" PointX="6" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="КурсоваяModel.Requsites" Width="1.5" PointX="5.25" PointY="33.125" IsExpanded="true" />
-        <AssociationConnector Association="КурсоваяModel.FK__Applicati__PayWa__08B54D69" ManuallyRouted="false" />
-        <AssociationConnector Association="КурсоваяModel.FK__Applicati__Servi__7F2BE32F" ManuallyRouted="false" />
-        <AssociationConnector Association="КурсоваяModel.FK__Application__00200768" ManuallyRouted="false" />
-        <AssociationConnector Association="КурсоваяModel.FK__ClientReq__BankI__0B91BA14" ManuallyRouted="false" />
-        <AssociationConnector Association="КурсоваяModel.FK__Requsites__BankI__0C85DE4D" ManuallyRouted="false" />
-        <AssociationConnector Association="КурсоваяModel.FK__Benefits__BCId__0A9D95DB" ManuallyRouted="false" />
-        <AssociationConnector Association="КурсоваяModel.FK__Benefits__Client__797309D9" ManuallyRouted="false" />
-        <AssociationConnector Association="КурсоваяModel.FK__Client__Busyness__07C12930" ManuallyRouted="false" />
-        <AssociationConnector Association="КурсоваяModel.FK__Card__ClientId__7A672E12" ManuallyRouted="false" />
-        <AssociationConnector Association="КурсоваяModel.FK__Card__DesiaseId__04E4BC85" ManuallyRouted="false" />
-        <AssociationConnector Association="КурсоваяModel.FK__Card__WorkerId__02084FDA" ManuallyRouted="false" />
-        <AssociationConnector Association="КурсоваяModel.FK__Service__Categor__09A971A2" ManuallyRouted="false" />
-        <AssociationConnector Association="КурсоваяModel.FK__Client__Educatio__06CD04F7" ManuallyRouted="false" />
-        <AssociationConnector Association="КурсоваяModel.FK__Client__FamilyPo__05D8E0BE" ManuallyRouted="false" />
-        <AssociationConnector Association="КурсоваяModel.FK__Client__Insuranc__03F0984C" ManuallyRouted="false" />
-        <AssociationConnector Association="КурсоваяModel.FK__ClientReq__Clien__7B5B524B" ManuallyRouted="false" />
-        <AssociationConnector Association="КурсоваяModel.FK__Document__Client__778AC167" ManuallyRouted="false" />
-        <AssociationConnector Association="КурсоваяModel.FK__Passport__Client__76969D2E" ManuallyRouted="false" />
-        <AssociationConnector Association="КурсоваяModel.FK__Polis__ClientId__787EE5A0" ManuallyRouted="false" />
-        <AssociationConnector Association="КурсоваяModel.FK__Document__Worker__01142BA1" ManuallyRouted="false" />
-        <AssociationConnector Association="КурсоваяModel.FK__Worker__Login__0F624AF8" ManuallyRouted="false" />
-        <AssociationConnector Association="КурсоваяModel.FK__Worker__PostId__02FC7413" ManuallyRouted="false" />
-        <AssociationConnector Association="КурсоваяModel.FK__Price__ServiceId__7E37BEF6" ManuallyRouted="false" />
-        <AssociationConnector Association="КурсоваяModel.ClientApproval" ManuallyRouted="false" />
-        <AssociationConnector Association="КурсоваяModel.Invalid" ManuallyRouted="false" />
+      <Diagram DiagramId="d57a9e9039aa4c93a9a89331b71fce09" Name="Diagram1" ZoomLevel="78">
+        <EntityTypeShape EntityType="CourseWorkModel.Application" Width="1.5" PointX="7.5" PointY="19.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="CourseWorkModel.Approval" Width="1.5" PointX="0.75" PointY="15.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="CourseWorkModel.Bank" Width="1.5" PointX="3" PointY="9.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="CourseWorkModel.Benefits" Width="1.5" PointX="5.25" PointY="15" IsExpanded="true" />
+        <EntityTypeShape EntityType="CourseWorkModel.BenefitsCategory" Width="1.5" PointX="3" PointY="21.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="CourseWorkModel.Busyness" Width="1.5" PointX="0.75" PointY="11.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="CourseWorkModel.Card" Width="1.5" PointX="8.25" PointY="14" IsExpanded="true" />
+        <EntityTypeShape EntityType="CourseWorkModel.CardTablePart" Width="1.5" PointX="10.5" PointY="15" IsExpanded="true" />
+        <EntityTypeShape EntityType="CourseWorkModel.Category" Width="1.5" PointX="3" PointY="38.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="CourseWorkModel.Client" Width="1.5" PointX="3" PointY="12.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="CourseWorkModel.ClientRequsites" Width="1.5" PointX="5.25" PointY="12.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="CourseWorkModel.Desiase" Width="1.5" PointX="6" PointY="5.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="CourseWorkModel.Document" Width="1.5" PointX="5.25" PointY="18" IsExpanded="true" />
+        <EntityTypeShape EntityType="CourseWorkModel.Education" Width="1.5" PointX="0.75" PointY="18" IsExpanded="true" />
+        <EntityTypeShape EntityType="CourseWorkModel.EnterData" Width="1.5" PointX="3.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="CourseWorkModel.FamilyPosition" Width="1.5" PointX="0.75" PointY="20.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="CourseWorkModel.Guardian" Width="1.5" PointX="5.25" PointY="26" IsExpanded="true" />
+        <EntityTypeShape EntityType="CourseWorkModel.GuardianPassport" Width="1.5" PointX="7.5" PointY="26" IsExpanded="true" />
+        <EntityTypeShape EntityType="CourseWorkModel.Insurance" Width="1.5" PointX="0.75" PointY="22.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="CourseWorkModel.Invalid" Width="1.5" PointX="8.25" PointY="11" IsExpanded="true" />
+        <EntityTypeShape EntityType="CourseWorkModel.InvalidGroup" Width="1.5" PointX="6" PointY="9.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="CourseWorkModel.Passport" Width="1.5" PointX="5.25" PointY="32.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="CourseWorkModel.PayWay" Width="1.5" PointX="5.25" PointY="21.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="CourseWorkModel.Polis" Width="1.5" PointX="5.25" PointY="35" IsExpanded="true" />
+        <EntityTypeShape EntityType="CourseWorkModel.Post" Width="1.5" PointX="3.75" PointY="2.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="CourseWorkModel.Price" Width="1.5" PointX="7.5" PointY="38.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="CourseWorkModel.Service" Width="1.5" PointX="5.25" PointY="38.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="CourseWorkModel.Worker" Width="1.5" PointX="6" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="CourseWorkModel.Requsites" Width="1.5" PointX="5.25" PointY="29.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="CourseWorkModel.AllAboutClientView" Width="1.5" PointX="0.75" PointY="2.5" IsExpanded="true" />
+        <AssociationConnector Association="CourseWorkModel.FK__Applicati__PayWa__10566F31" ManuallyRouted="false" />
+        <AssociationConnector Association="CourseWorkModel.FK__Applicati__Servi__05D8E0BE" ManuallyRouted="false" />
+        <AssociationConnector Association="CourseWorkModel.FK__Application__06CD04F7" ManuallyRouted="false" />
+        <AssociationConnector Association="CourseWorkModel.FK__ClientReq__BankI__1332DBDC" ManuallyRouted="false" />
+        <AssociationConnector Association="CourseWorkModel.FK__Requsites__BankI__14270015" ManuallyRouted="false" />
+        <AssociationConnector Association="CourseWorkModel.FK__Benefits__BCId__123EB7A3" ManuallyRouted="false" />
+        <AssociationConnector Association="CourseWorkModel.FK__Benefits__Client__7F2BE32F" ManuallyRouted="false" />
+        <AssociationConnector Association="CourseWorkModel.FK__Client__Busyness__0F624AF8" ManuallyRouted="false" />
+        <AssociationConnector Association="CourseWorkModel.FK__Card__ClientId__02FC7413" ManuallyRouted="false" />
+        <AssociationConnector Association="CourseWorkModel.FK__Card__DesiaseId__0C85DE4D" ManuallyRouted="false" />
+        <AssociationConnector Association="CourseWorkModel.FK__Card__WorkerId__08B54D69" ManuallyRouted="false" />
+        <AssociationConnector Association="CourseWorkModel.FK__CardTablePar__ID__30C33EC3" ManuallyRouted="false" />
+        <AssociationConnector Association="CourseWorkModel.FK__CardTable__Desia__2FCF1A8A" ManuallyRouted="false" />
+        <AssociationConnector Association="CourseWorkModel.FK__CardTable__Worke__2EDAF651" ManuallyRouted="false" />
+        <AssociationConnector Association="CourseWorkModel.FK__Service__Categor__114A936A" ManuallyRouted="false" />
+        <AssociationConnector Association="CourseWorkModel.FK__Client__Educatio__0E6E26BF" ManuallyRouted="false" />
+        <AssociationConnector Association="CourseWorkModel.FK__Client__FamilyPo__0D7A0286" ManuallyRouted="false" />
+        <AssociationConnector Association="CourseWorkModel.FK__Client__Insuranc__0A9D95DB" ManuallyRouted="false" />
+        <AssociationConnector Association="CourseWorkModel.FK__ClientReq__Clien__00200768" ManuallyRouted="false" />
+        <AssociationConnector Association="CourseWorkModel.FK__Document__Client__7D439ABD" ManuallyRouted="false" />
+        <AssociationConnector Association="CourseWorkModel.FK__Guardian__Client__2B0A656D" ManuallyRouted="false" />
+        <AssociationConnector Association="CourseWorkModel.FK__Invalid__ClientI__3C34F16F" ManuallyRouted="false" />
+        <AssociationConnector Association="CourseWorkModel.FK__Passport__Client__7C4F7684" ManuallyRouted="false" />
+        <AssociationConnector Association="CourseWorkModel.FK__Polis__ClientId__7E37BEF6" ManuallyRouted="false" />
+        <AssociationConnector Association="CourseWorkModel.FK__Document__Worker__07C12930" ManuallyRouted="false" />
+        <AssociationConnector Association="CourseWorkModel.FK__Worker__Login__17036CC0" ManuallyRouted="false" />
+        <AssociationConnector Association="CourseWorkModel.FK__GuardianPassport__2BFE89A6" ManuallyRouted="false" />
+        <AssociationConnector Association="CourseWorkModel.FK__Invalid__IGId__3D2915A8" ManuallyRouted="false" />
+        <AssociationConnector Association="CourseWorkModel.FK__Worker__PostId__09A971A2" ManuallyRouted="false" />
+        <AssociationConnector Association="CourseWorkModel.FK__Price__ServiceId__04E4BC85" ManuallyRouted="false" />
+        <AssociationConnector Association="CourseWorkModel.ClientApproval" ManuallyRouted="false" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

@@ -15,7 +15,7 @@
             <StackPanel Orientation="Vertical" VerticalAlignment="Center" HorizontalAlignment="Center">
                 <StackPanel Orientation="Horizontal">
                     <TextBox Margin="5" Width="100" x:Name="SearchBox" MaxLength="30" 
-                                 Style="{StaticResource MaterialDesignTextBox}"
+                                 Style="{StaticResource MaterialDesignTextBox}" TextChanged="SearchBox_TextChanged"
                                  materialDesign:HintAssist.HelperText="Поиск"/>
                     <StackPanel Margin="5" Orientation="Horizontal">
                         <RadioButton Margin="5" Content="Более поздние"
@@ -45,6 +45,7 @@
                                         <StackPanel.ContextMenu>
                                             <ContextMenu>
                                                 <MenuItem Header="Редактировать" Click="MenuItem_Click"/>
+                                                <MenuItem Header="Вывести чек" Click="MenuItem_Click_1"/>
                                             </ContextMenu>
                                         </StackPanel.ContextMenu>
                                     </StackPanel>

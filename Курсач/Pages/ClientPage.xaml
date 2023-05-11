@@ -1,0 +1,50 @@
+﻿<Page x:Class="Курсач.Pages.ClientPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Курсач.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Loaded="Page_Loaded"
+      xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+      Title="ClientPage">
+
+    <Grid>
+        <Viewbox>
+            <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center">
+                <StackPanel Orientation="Horizontal">
+                    <TextBox Margin="5" Width="100" x:Name="SearchBox" MaxLength="30"
+                             TextChanged="SearchBox_TextChanged"
+                                 Style="{StaticResource MaterialDesignTextBox}"
+                                 materialDesign:HintAssist.HelperText="Поиск"/>
+                    <StackPanel Margin="5" Orientation="Horizontal">
+                        <RadioButton Margin="5" Content="Более поздние"
+                                     Checked="UpCheck_Checked"  x:Name="UpCheck"
+                                     Style="{StaticResource MaterialDesignTabRadioButtonBottom}" />
+                        <RadioButton Margin="5" Content="Более ранние"
+                                     Checked="UpCheck_Checked" x:Name="DownCheck"
+                                     Style="{StaticResource MaterialDesignTabRadioButtonBottom}" />
+                    </StackPanel>
+                    <Button x:Name="AddClientButton" Click="AddClientButton_Click" 
+                            Content="Добавить диагноз" Margin="5" Cursor="Hand"/>
+                    <Button x:Name="BackButton" Content="Назад" Margin="130,5,5,5" Cursor="Hand"
+                            Click="BackButton_Click"/>
+                </StackPanel>
+                <ListView Height="350" Width="750" x:Name="DesiaseListView" Margin="10" ScrollViewer.CanContentScroll="False">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <Border BorderBrush="#673AB7" BorderThickness="2" CornerRadius="5">
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Text="{Binding Client.FullName}"/>
+                                    <TextBlock Text="{Binding Desiase.DesiaseName}"/>
+                                    <TextBlock Text="{Binding CardDateStart}"/>
+                                </StackPanel>
+                            </Border>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </StackPanel>
+        </Viewbox>
+    </Grid>
+</Page>

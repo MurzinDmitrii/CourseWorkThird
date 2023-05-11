@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Курсач.Classes;
 using Курсач.Model;
 
 namespace Курсач.Pages
@@ -40,8 +41,10 @@ namespace Курсач.Pages
         private void Load()
         {
             var ApplicationList = DB.entities.Application.ToList();
-            ApplicationList = ApplicationList.Where(c => c.Document.Client.FullName.ToLower().Contains(SearchBox.Text.ToLower())).ToList();
-            if(DownCheck.IsChecked == true)
+            Document doc = DB.entities.Document.FirstOrDefault(c => c.DocumentId == 10);
+            ApplicationList = ApplicationList.Where(c => c.Document.Client.FullName.
+                ToLower().Contains(SearchBox.Text.ToLower())).ToList();
+            if (DownCheck.IsChecked == true)
                 ApplicationList = ApplicationList.OrderBy(c => c.ApplicationDate).ToList();
             else
                 ApplicationList = ApplicationList.OrderByDescending(c => c.ApplicationDate).ToList();
@@ -82,6 +85,18 @@ namespace Курсач.Pages
         private void AddContractButton_Click(object sender, RoutedEventArgs e)
         {
             NavigationService.Navigate(new AddApplication());
+        }
+
+        private void MenuItem_Click_1(object sender, RoutedEventArgs e)
+        {
+            MenuItem menu = sender as MenuItem;
+            Model.Application selectedItem = menu.DataContext as Model.Application;
+            PrintCheck.OutputApplication(selectedItem);
+        }
+
+        private void SearchBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            Load();
         }
     }
 }
