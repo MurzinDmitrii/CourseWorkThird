@@ -29,7 +29,9 @@
                             Content="Добавить клиента" Margin="5" Cursor="Hand"/>
                     <Button x:Name="AddContractButton" Click="AddContractButton_Click"
                             Content="Добавить контракт" Margin="5" Cursor="Hand"/>
-                    <Button x:Name="BackButton" Content="Назад" Margin="70,5,5,5" Cursor="Hand"
+                    <Button x:Name="StatisticButton" Content="Статистика" Margin="5" Cursor="Hand"
+                            Click="StatisticButton_Click"/>
+                    <Button x:Name="BackButton" Content="Назад" Margin="5" Cursor="Hand"
                             Click="BackButton_Click"/>
                 </StackPanel>
                 <ListView Height="350" Width="750" x:Name="ApplicationListView" Margin="10" ScrollViewer.CanContentScroll="False">

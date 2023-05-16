@@ -98,5 +98,10 @@ namespace Курсач.Pages
         {
             Load();
         }
+
+        private void StatisticButton_Click(object sender, RoutedEventArgs e)
+        {
+            StatisticHelper.StatisticOut();
+        }
     }
 }
